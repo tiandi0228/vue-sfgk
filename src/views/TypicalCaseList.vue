@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="list" :style="{height:Height + 'px'}">
     <ul>
-      <router-link v-for="list in lists" :to="{path: '/detail/' + list.NoticeId}" tag="li">
+      <router-link v-for="list in lists" :to="{path: '/detail/' + list.NoticeId + '/case'}" tag="li">
         <span>{{list.NoticeTitle}}</span>
         <em>{{list.NoticeDate}}</em>
       </router-link>
@@ -12,17 +12,13 @@
 </template>
 <script>
   import * as api from '../api'
-  import vFooter from '../components/Footer'
 
   export default {
     name: 'list',
-    components: {
-      vFooter
-    },
     data() {
       return {
         lists: [],
-        limit: 20,
+        limit: 30,
         loading: false,
         scroller: null,
         loadingText: '加载中……',
@@ -41,7 +37,7 @@
       getTypicalCaseList() {
         self = this
         api.fetchTypicalCaseList(self.limit).then(function (res) {
-          self.lists = res
+          self.lists = res.objectdata
         })
       },
       // 更多加载
@@ -49,15 +45,15 @@
         this.loading = true
         setTimeout(() => {
           this.getTypicalCaseList()
-          this.limit += 20
+          this.limit += 10
           this.loading = false
-        }, 1000)
+        }, 2000)
       }
     }
   }
 
 </script>
-<style lang="css" scoped>
+<style lang="less" scoped>
   .list {
     margin-bottom: 60px;
     overflow: auto;
