@@ -30,3 +30,33 @@ export function fetchSscsList() {
 export function fetchSscsInfo(title) {
   return fetch(`GetSscsInfo.php?title=${title}`)
 }
+
+// 获取法院列表
+export function fetchMapList() {
+  return fetch(`getCourtList.php`)
+}
+
+// 获取法院详细页
+export function fetchMapInfo(name) {
+  return fetch(`CourtInfoDetail.php?name=${name}`)
+}
+
+// 获取执行常识列表
+export function fetchZxcsList() {
+  return fetch(`GetZxcsList.php`)
+}
+
+// 获取执行常识详细页
+export function fetchZxcsInfo(title) {
+  return fetch(`GetZxcsInfo.php?title=${title}`)
+}
+
+// 获取执行常识列表
+export function fetchZxgzflgdList() {
+  return fetch(`GetZxgzflgdList.php`)
+}
+
+// 获取执行常识详细页
+export function fetchZxgzflgdInfo(title) {
+  return fetch(`GetZxgzflgdInfo.php?title=${title}`)
+}

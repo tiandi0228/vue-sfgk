@@ -21,12 +21,12 @@ export default new VueRouter({
     },
     component: resolve => require(['../views/Detail.vue'], resolve)
   }, {
-    path: '/sscsList',
-    name: 'sscsList',
+    path: '/List/:tab',
+    name: 'List',
     meta: {
       auth: false
     },
-    component: resolve => require(['../views/SscsList.vue'], resolve)
+    component: resolve => require(['../views/List.vue'], resolve)
   }, {
     path: '/mapList',
     name: 'mapList',

@@ -1,68 +1,36 @@
 <template lang="html">
   <div class="map-list">
-      <div class="list" @change="btn(0)">
-        <span class="txt">杭州市</span>
-        <span class="icon iconfont icon-down"></span>
+    <template v-for="list in lists">
+      <div class="list" @click="btn(list)">
+        <span class="txt">{{list.name}}</span>
+        <span class="icon iconfont" :class="[list.open ? 'icon-up' : 'icon-down']"></span>
       </div>
-      <ul>
-          <li></li>
+      <ul v-show="list.open">
+        <router-link v-for="list in list.list" :to="{path: '/detail/' + list.name + '/map'}" tag="li">{{list.name}}</router-link>
       </ul>
-      <div class="list" @click="btn(1)">
-        <span class="txt">宁波市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(2)">
-        <span class="txt">温州市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(3)">
-        <span class="txt">湖州市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(4)">
-        <span class="txt">嘉兴市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(5)">
-        <span class="txt">绍兴市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(6)">
-        <span class="txt">金华市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(7)">
-        <span class="txt">衢州市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(8)">
-        <span class="txt">舟山市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(9)">
-        <span class="txt">台州市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
-      <div class="list" @click="btn(10)">
-        <span class="txt">丽水市</span>
-        <span class="icon iconfont icon-down"></span>
-      </div>
+    </template>
   </div>
 </template>
 <script>
   import * as api from '../api'
-
   export default {
     name: 'map-list',
     data() {
       return {
-
+        lists: {},
       }
     },
+    created() {
+      self = this
+      // 法院列表
+      api.fetchMapList().then(function (res) {
+        self.lists = res.data
+      })
+    },
     methods: {
-        btn(index) {
-            console.log(index)
-        }
+      btn(item) {
+        item.open = !item.open
+      }
     }
   }
 
