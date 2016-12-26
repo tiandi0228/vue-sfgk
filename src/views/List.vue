@@ -37,6 +37,11 @@
             self.lists = res
           })
           break;
+        case 'judgmentbook': // 裁判文书
+          api.fetchZjgyzxgdList().then(function (res) {
+            self.lists = res
+          })
+          break;
       }
     }
   }

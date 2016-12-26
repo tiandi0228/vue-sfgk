@@ -34,5 +34,12 @@ export default new VueRouter({
       auth: false
     },
     component: resolve => require(['../views/MapList.vue'], resolve)
+  }, {
+    path: '/judgmentBookList',
+    name: 'judgmentBookList',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/JudgmentBookList.vue'], resolve)
   }]
 })
