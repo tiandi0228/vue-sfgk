@@ -91,3 +91,13 @@ export function postJudgmentBookList(obj) {
 export function fetchJudgmentBookDeatil(id) {
   return fetch(`searchJudgmentBookDeatil.php?id=${id}`)
 }
+
+// 获取听证公告列表
+export function fetchNoticeTZList(limit) {
+  return fetch(`GetNoticeTZList.php?num=${limit}`)
+}
+
+// 获取听证公告详细页
+export function fetchNoticeTZInfo(id) {
+  return fetch(`GetNoticeTZInfo.php?id=${id}`)
+}

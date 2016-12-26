@@ -7,7 +7,7 @@ export default new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [{
-    path: '/typicalCaseList',
+    path: '/typicalCaseList/:tab',
     name: 'typicalCaseList',
     meta: {
       auth: false

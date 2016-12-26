@@ -15,7 +15,9 @@
       <h2>{{AH}}</h2>
       <p>发布时间：{{CreateTime}}</p>
       <p><a :href="DocumentPdfPath">PDF下载</a></p>
-      <div><iframe :src="DocumentHtmlPath" style="width:100%;" frameborder="0" :style="{height:Height + 'px'}"></iframe></div>
+      <div>
+        <iframe :src="DocumentHtmlPath" style="width:100%;" frameborder="0" :style="{height:Height + 'px'}"></iframe>
+      </div>
     </div>
     <vFooter></vFooter>
   </div>
@@ -80,8 +82,14 @@
           api.fetchJudgmentBookDeatil(self.$route.params.id).then(function (res) {
             self.AH = res.Data.AH
             self.DocumentHtmlPath = res.Data.DocumentHtmlPath,
-              self.DocumentPdfPath = res.Data.DocumentPdfPath,
-              self.CreateTime = res.Data.CreateTime
+            self.DocumentPdfPath = res.Data.DocumentPdfPath,
+            self.CreateTime = res.Data.CreateTime
+          })
+          break;
+        case 'tzgg': // 听证公告
+          api.fetchNoticeTZInfo(self.$route.params.id).then(function (res) {
+            self.title = res.Title
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
           })
           break;
       }
