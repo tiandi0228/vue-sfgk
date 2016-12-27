@@ -37,10 +37,10 @@
       self = this
       switch (self.tab) {
         case 'dxal': // 典型案例
-          this.getTypicalCaseList()
+          self.getTypicalCaseList()
           break;
         case 'tzgg': // 听证公告
-          this.getNoticeTZList()
+          self.getNoticeTZList()
           break;
       }
       self.Height = document.body.scrollHeight - 60
@@ -58,7 +58,10 @@
       },
       // 听证公告列表
       getNoticeTZList() {
-        api.fetchNoticeTZList(self.limit).then(function (res) {
+        api.postNoticeTZList({
+          'startIndex': 0,
+          'endIndex': self.limit
+        }).then(function (res) {
           self.NoticeTZList = res.objectdata
         })
       },
@@ -66,7 +69,7 @@
       loadMore() {
         this.loading = true
         setTimeout(() => {
-          switch (self.tab) {
+          switch (this.tab) {
             case 'dxal': // 典型案例
               this.getTypicalCaseList()
               break;

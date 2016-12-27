@@ -11,13 +11,27 @@
       <p v-if="mapData.tsdh">投诉电话:{{mapData.tsdh}}</p>
       <p v-if="mapData.xfdh">信访电话:{{mapData.xfdh}}</p>
     </div>
-    <div class="judgment" v-if="AH">
+    <div class="judgment" v-if="this.$route.params.tab === 'judgmentbook'">
       <h2>{{AH}}</h2>
       <p>发布时间：{{CreateTime}}</p>
       <p><a :href="DocumentPdfPath">PDF下载</a></p>
       <div>
         <iframe :src="DocumentHtmlPath" style="width:100%;" frameborder="0" :style="{height:Height + 'px'}"></iframe>
       </div>
+    </div>
+    <div class="sdgg" v-if="this.$route.params.tab === 'sdgg'">
+      <h2>{{AH}}</h2>
+      <p style="text-align: center;padding-bottom: 10px;">发布时间：{{Time}}</p>
+      <p>{{content}}</p>
+      <p style="text-align: right;padding-top: 10px;">{{Court}}</p>
+    </div>
+    <div class="news" v-if="this.$route.params.tab === 'news'">
+      <h2>{{vc_title}}</h2>
+      <div style="text-align: center;padding-bottom:10px;">
+        <span>来源：{{source}}</span>
+        <span style="padding-left: 10px;">发布时间：{{CreateTime}}</span>
+      </div>
+      <div v-html="content"></div>
     </div>
     <vFooter></vFooter>
   </div>
@@ -36,7 +50,11 @@
         DocumentPdfPath: '',
         AH: '',
         CreateTime: '',
-        Height: ''
+        Height: '',
+        Time: '',
+        vc_title: '',
+        Court: '',
+        source: '',
       }
     },
     created() {
@@ -82,14 +100,30 @@
           api.fetchJudgmentBookDeatil(self.$route.params.id).then(function (res) {
             self.AH = res.Data.AH
             self.DocumentHtmlPath = res.Data.DocumentHtmlPath,
-            self.DocumentPdfPath = res.Data.DocumentPdfPath,
-            self.CreateTime = res.Data.CreateTime
+              self.DocumentPdfPath = res.Data.DocumentPdfPath,
+              self.CreateTime = res.Data.CreateTime
           })
           break;
         case 'tzgg': // 听证公告
           api.fetchNoticeTZInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
             self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+          })
+          break;
+        case 'sdgg': // 送达公告
+          api.fetchNoticeSDInfo(self.$route.params.id).then(function (res) {
+            self.AH = res.CaseNo
+            self.Time = res.Time
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.Court = res.Court
+          })
+          break;
+        case 'news': // 新闻
+          api.fetchCourtDTContent(self.$route.params.id).then(function (res) {
+            self.vc_title = res.vc_title
+            self.source = res.vc_source
+            self.content = res.artcontent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.CreateTime = res.c_createdate
           })
           break;
       }
@@ -100,15 +134,12 @@
 <style lang="less" scoped>
   .detail {
     margin-bottom: 60px;
+    padding: 0 10px;
   }
   
   .detail h2 {
     text-align: center;
     padding: 20px 0;
-  }
-  
-  .detail .content {
-    padding: 0 10px;
   }
   
   .detail .judgment p {

@@ -93,11 +93,46 @@ export function fetchJudgmentBookDeatil(id) {
 }
 
 // 获取听证公告列表
-export function fetchNoticeTZList(limit) {
-  return fetch(`GetNoticeTZList.php?num=${limit}`)
+export function postNoticeTZList(limit) {
+  return post(`GetNoticeTZList.php`, limit)
 }
 
 // 获取听证公告详细页
 export function fetchNoticeTZInfo(id) {
   return fetch(`GetNoticeTZInfo.php?id=${id}`)
+}
+
+// 搜索开庭公告列表
+export function postNoticeKTList(obj) {
+  return post(`GetNoticeKTList.php`, obj)
+}
+
+// 搜索送达公告列表
+export function postNoticeSDList(obj) {
+  return post(`GetNoticeSDList.php`, obj)
+}
+
+// 获取送达公告详细页
+export function fetchNoticeSDInfo(id) {
+  return fetch(`GetNoticeSDInfo.php?id=${id}`)
+}
+
+// 获取新闻列表
+export function fetchCourtDTList(id, limit) {
+  return fetch(`GetCourtDTList.php?catalogid=${id}&pagesize=${limit}`)
+}
+
+// 获取新闻详细页
+export function fetchCourtDTContent(id) {
+  return fetch(`GetCourtDTContent.php?articleid=${id}`)
+}
+
+// 获取新闻发布会列表
+export function fetchCourtNewsList(id) {
+  return fetch(`GetCourtNewsList.php?catalogid=${id}`)
+}
+
+// 曝光台列表
+export function postCreditList(obj) {
+  return post(`GetCreditList.php`, obj)
 }

@@ -41,5 +41,47 @@ export default new VueRouter({
       auth: false
     },
     component: resolve => require(['../views/JudgmentBookList.vue'], resolve)
+  }, {
+    path: '/menu/:id',
+    name: 'menu',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/Menu.vue'], resolve)
+  }, {
+    path: '/noticeSDList',
+    name: 'noticeSDList',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/NoticeSDList.vue'], resolve)
+  }, {
+    path: '/noticeKTList',
+    name: 'noticeKTList',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/NoticeKTList.vue'], resolve)
+  }, {
+    path: '/newsList/:id',
+    name: 'newsList',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/NewsList.vue'], resolve)
+  }, {
+    path: '/courtNewsList',
+    name: 'courtNewsList',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/CourtNewsList.vue'], resolve)
+  }, {
+    path: '/creditList/:id',
+    name: 'creditList',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/CreditList.vue'], resolve)
   }]
 })

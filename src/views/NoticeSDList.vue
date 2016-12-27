@@ -2,25 +2,18 @@
   <div class="judgment-book-list" :style="{height:Height + 'px'}">
     <div class="search">
       <form v-on:submit.prevent="searchList">
-        <select v-model="ajbs">
-          <option :value="list.text" v-for="list in caseype">{{list.text}}</option>
-        </select>
         <select v-model="selected">
           <option v-for="yx in YX" :value="yx.text">{{yx.text}}</option>
         </select>
         <select v-model="cbfy">
           <option v-for="(zy,index) in selection" :value="zy.text" :selected="index === 0 ? true : false">{{zy.text}}</option>
         </select>
-        <mu-text-field v-model="ah" hintText="请输入案号" />
-        <mu-text-field v-model="key" hintText="请输入关键字" />
-        <mu-date-picker v-model="startDate" hintText="选择起始时间" />
-        <mu-date-picker v-model="endDate" hintText="选择结束时间" />
         <button>搜索</button>
       </form>
     </div>
     <ul>
-      <router-link v-for="list in lists" :to="{path: '/detail/' + list.DocumentId + '/judgmentbook'}" tag="li">
-        <span>{{list.AH}}</span>
+      <router-link v-for="list in lists" :to="{path: '/detail/' + list.NoticeSDId + '/sdgg'}" tag="li">
+        <span>{{list.CaseNo}}</span>
         <em>查看详情</em>
       </router-link>
     </ul>
@@ -34,40 +27,11 @@
     name: 'judgment-book-list',
     data() {
       return {
-        ajbs: '全部',
-        caseype: [{
-          text: '全部'
-        }, {
-          text: '民事'
-        }, {
-          text: '刑事'
-        }, {
-          text: '行政'
-        }, {
-          text: '执行'
-        }, {
-          text: '赔偿'
-        }, {
-          text: '商事'
-        }, {
-          text: '海事海商'
-        }, {
-          text: '申诉'
-        }, {
-          text: '知识产权'
-        }, {
-          text: '其他'
-        }],
         selected: '全部',
         YX: [{
           text: '全部',
           ZY: [{
             text: '全部'
-          }]
-        }, {
-          text: '高院',
-          ZY: [{
-            text: '浙江省高级人民法院'
           }]
         }, {
           text: '杭州市',
@@ -312,17 +276,8 @@
           }, {
             text: "景宁县人民法院"
           }]
-        }, {
-          text: "海事",
-          ZY: [{
-            text: "宁波海事法院"
-          }]
         }],
-        ah: '',
-        key: '',
         cbfy: '',
-        startDate: '',
-        endDate: '',
         limit: 20,
         loading: false,
         scroller: null,
@@ -352,17 +307,12 @@
       // 搜索列表
       searchList() {
         self = this
-        api.postJudgmentBookList({
-          'ajbs': self.ajbs === '全部' ? '' : self.ajbs,
+        api.postNoticeSDList({
           'cbfy': self.cbfy,
-          'ah': self.ah,
-          'key': self.key,
-          'jarqstart': self.startDate.replace(/-/g, ""),
-          'jarqend': self.endDate.replace(/-/g, ""),
-          'startindex': 0,
-          'endindex': self.limit
+          'startIndex': 0,
+          'endIndex': self.limit
         }).then(function (res) {
-          self.lists = res.Data.objectdata
+          self.lists = res.objectdata
         })
       },
       // 更多加载
@@ -405,10 +355,8 @@
   }
   
   .judgment-book-list .search .mu-date-picker {
-    float: left;
-    width: 45%;
-    overflow: hidden;
-    margin-right: 5%;
+    width: 100%;
+    clear: both;
   }
   
   .judgment-book-list .search button {
@@ -417,12 +365,10 @@
     height: 40px;
   }
   
-  .judgment-book-list ul {
-    padding: 10px;
-  }
-  
   .judgment-book-list li {
     line-height: 30px;
+    overflow: hidden;
+    padding: 0 10px;
   }
   
   .judgment-book-list span {
