@@ -7,6 +7,13 @@ export default new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [{
+    path: '/',
+    name: '/',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/Index.vue'], resolve)
+  }, {
     path: '/typicalCaseList/:tab',
     name: 'typicalCaseList',
     meta: {
@@ -77,11 +84,39 @@ export default new VueRouter({
     },
     component: resolve => require(['../views/CourtNewsList.vue'], resolve)
   }, {
-    path: '/creditList/:id',
+    path: '/creditList',
     name: 'creditList',
     meta: {
       auth: false
     },
     component: resolve => require(['../views/CreditList.vue'], resolve)
+  }, {
+    path: '/limitList',
+    name: 'limitList',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/LimitList.vue'], resolve)
+  }, {
+    path: '/sfwj',
+    name: 'sfwj',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/SFWJList.vue'], resolve)
+  }, {
+    path: '/jxjs',
+    name: 'jxjs',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/JXJSList.vue'], resolve)
+  }, {
+    path: '/caseQueryList/:tab',
+    name: 'caseQueryList',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/CaseQueryList.vue'], resolve)
   }]
 })

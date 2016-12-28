@@ -1,12 +1,13 @@
 <template lang="html">
   <div class="credit-list" :style="{height:Height + 'px'}">
     <mu-tabs :value="activeTab" @change="handleTabChange">
-      <mu-tab value="tab1" title="个人未履行生效裁判信息" />
-      <mu-tab value="tab2" title="单位未履行生效裁判信息" />
+      <mu-tab value="tab1" title="限制高消费" />
+      <mu-tab value="tab2" title="限制处境" />
+      <mu-tab value="tab3" title="限制招投标" />
     </mu-tabs>
     <div v-if="activeTab === 'tab1'">
       <div class="search">
-        <form v-on:submit.prevent="searchGRList">
+        <form v-on:submit.prevent="searchGXFList">
           <select v-model="cbfy">
             <option v-for="zy in fy" :value="zy.text">{{zy.text}}</option>
           </select>
@@ -18,7 +19,7 @@
         </form>
       </div>
       <ul>
-        <li v-for="list in GRlists">
+        <li v-for="list in GXFlists">
           <p style="padding-bottom:10px;">姓名：{{list.ReallyName}}</p>
           <p style="padding-bottom:10px;">证件号码：{{list.CredentialsNumber}}</p>
           <div class="con">
@@ -37,7 +38,7 @@
     </div>
     <div v-if="activeTab === 'tab2'">
       <div class="search">
-        <form v-on:submit.prevent="searchDWList">
+        <form v-on:submit.prevent="searchCJList">
           <select v-model="cbfy">
             <option v-for="zy in fy" :value="zy.text">{{zy.text}}</option>
           </select>
@@ -49,7 +50,38 @@
         </form>
       </div>
       <ul>
-        <li v-for="list in DWlists">
+        <li v-for="list in CJlists">
+          <p style="padding-bottom:10px;">姓名：{{list.ReallyName}}</p>
+          <p style="padding-bottom:10px;">证件号码：{{list.CredentialsNumber}}</p>
+          <div class="con">
+            <p style="padding-top:10px;">地址：{{list.Address}}</p>
+            <p>执行依据：{{list.ZXYJ}}</p>
+            <p>案号：{{list.AH}}</p>
+            <p>执行案由：{{list.ZXAY}}</p>
+            <p>执行法院：{{list.ZXFY}}</p>
+            <p>未执行金额：{{list.WZXJE}}</p>
+            <p style="padding-bottom:10px;">标的金额：{{list.WZXJE}}</p>
+          </div>
+          <p style="padding-top:10px;">曝光时间：{{list.BGRQ}}</p>
+        </li>
+      </ul>
+      <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" :loadingText="loadingText" />
+    </div>
+    <div v-if="activeTab === 'tab3'">
+      <div class="search">
+        <form v-on:submit.prevent="searchZTBList">
+          <select v-model="cbfy">
+            <option v-for="zy in fy" :value="zy.text">{{zy.text}}</option>
+          </select>
+          <p><mu-text-field v-model="reallyName" hintText="请输入姓名" /> <mu-text-field v-model="ah" hintText="请输入案号" /></p>
+          <p><mu-text-field style="width: 100%;" v-model="credentialsNumber" hintText="请输入证件号码" /></p>
+          <p><mu-date-picker v-model="startDate" hintText="选择起始时间" />
+          <mu-date-picker v-model="endDate" hintText="选择结束时间" /></p>
+          <button>搜索</button>
+        </form>
+      </div>
+      <ul>
+        <li v-for="list in ZTBlists">
           <p style="padding-bottom:10px;">姓名：{{list.ReallyName}}</p>
           <p style="padding-bottom:10px;">证件号码：{{list.CredentialsNumber}}</p>
           <div class="con">
@@ -406,24 +438,26 @@
         scroller: null,
         loadingText: '加载中……',
         Height: '',
-        GRlists: [],
-        DWlists: [],
+        GXFlists: [],
+        CJlists: [],
+        ZTBlists: [],
         activeTab: 'tab1'
       }
     },
     created() {
-      this.searchGRList()
-      this.searchDWList()
+      this.searchGXFList()
+      this.searchCJList()
+      this.searchZTBList()
       this.Height = document.body.scrollHeight - 60
     },
     mounted() {
       this.scroller = this.$el
     },
     methods: {
-      // 搜索个人列表
-      searchGRList() {
+      // 搜索限制高消费列表
+      searchGXFList() {
         self = this
-        api.postCreditList({
+        api.postLimitList({
           'reallyName': self.reallyName,
           'credentialsNumber': self.credentialsNumber,
           'ZXFY': self.cbfy,
@@ -434,13 +468,13 @@
           'endIndex': self.limit,
           'type': 1
         }).then(function (res) {
-          self.GRlists = res.objectdata
+          self.GXFlists = res.objectdata
         })
       },
-      // 搜索单位列表
-      searchDWList() {
+      // 搜索限制出境列表
+      searchCJList() {
         self = this
-        api.postCreditList({
+        api.postLimitList({
           'reallyName': self.reallyName,
           'credentialsNumber': self.credentialsNumber,
           'ZXFY': self.cbfy,
@@ -451,15 +485,33 @@
           'endIndex': self.limit,
           'type': 2
         }).then(function (res) {
-          self.DWlists = res.objectdata
+          self.CJlists = res.objectdata
+        })
+      },
+      // 搜索限制招投标列表
+      searchZTBList() {
+        self = this
+        api.postLimitList({
+          'reallyName': self.reallyName,
+          'credentialsNumber': self.credentialsNumber,
+          'ZXFY': self.cbfy,
+          'AH': self.ah,
+          'StartLARQ': self.startDate.replace(/-/g, ""),
+          'EndLARQ': self.endDate.replace(/-/g, ""),
+          'startIndex': 0,
+          'endIndex': self.limit,
+          'type': 3
+        }).then(function (res) {
+          self.ZTBlists = res.objectdata
         })
       },
       // 更多加载
       loadMore() {
         this.loading = true
         setTimeout(() => {
-          this.searchGRList()
-          this.searchDWList()
+          this.searchGXFList()
+          this.searchCJList()
+          this.searchZTBList()
           this.limit += 10
           this.loading = false
         }, 1000)
@@ -532,8 +584,6 @@
     width: 100%;
     clear: both;
     height: 40px;
-    background: #20afc5;
-    color: #fff;
   }
   
   .credit-list li {

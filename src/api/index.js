@@ -132,7 +132,62 @@ export function fetchCourtNewsList(id) {
   return fetch(`GetCourtNewsList.php?catalogid=${id}`)
 }
 
-// 曝光台列表
+// 获取曝光台列表
 export function postCreditList(obj) {
   return post(`GetCreditList.php`, obj)
+}
+
+// 获取执行惩戒列表
+export function postLimitList(obj) {
+  return post(`GetLimitList.php`, obj)
+}
+
+// 获取司法文件中的最高法院指导文件列表
+export function fetchCourtHighestGuideFileList(limit) {
+  return fetch(`GetCourtHighestGuideFileList.php?endIndex=${limit}`)
+}
+
+// 获取司法文件中的最高法院指导文件详情
+export function fetchCourtHighestGuideFileInfo(id) {
+  return fetch(`GetCourtHighestGuideFileInfo.php?id=${id}`)
+}
+
+// 获取司法文件中的浙江省法院指导文件列表
+export function fetchCourtGuideFileList(limit) {
+  return fetch(`GetCourtGuideFileList.php?endIndex=${limit}`)
+}
+
+// 获取司法文件中的浙江省法院指导文件详情
+export function fetchCourtGuideFileInfo(id) {
+  return fetch(`GetCourtGuideFileInfo.php?id=${id}`)
+}
+
+// 获取立案公示列表
+export function fetchCommuteGSList(city) {
+  return fetch(`GetCommuteGSList.php?courtName=${city}`)
+}
+
+// 获取立案公示详情
+export function fetchCommuteGSInfo(id) {
+  return fetch(`GetCommuteGSInfo.php?id=${id}`)
+}
+
+// 获取减刑假释中的开庭公告列表
+export function fetchExecuteInformationList(limit) {
+  return fetch(`GetExecuteInformationList.php?endIndex=${limit}`)
+}
+
+// 获取减刑假释中的开庭公告详情
+export function fetchExecuteInformationInfo(id) {
+  return fetch(`GetExecuteInformationInfo.php?id=${id}`)
+}
+
+// 获取减刑假释中的裁判文书列表
+export function fetchCommuteParoleDocumentList(limit) {
+  return fetch(`GetCommuteParoleDocumentList.php?endIndex=${limit}`)
+}
+
+// 获取减刑假释中的开庭公告详情
+export function fetchCommuteParoleDocumentInfo(id) {
+  return fetch(`GetCommuteParoleDocumentInfo.php?id=${id}`)
 }

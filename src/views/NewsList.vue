@@ -24,7 +24,6 @@
       }
     },
     created() {
-
       this.getNewsList()
       this.Height = document.body.scrollHeight - 60
     },

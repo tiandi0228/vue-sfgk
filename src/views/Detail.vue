@@ -33,6 +33,11 @@
       </div>
       <div v-html="content"></div>
     </div>
+    <div class="judgment" v-if="this.$route.params.tab === 'cpws'">
+      <div>
+        <iframe :src="'http://www.zjsfgkw.cn/attachment/paroleDocument/'+DocumentHtmlPath" style="width:100%;" frameborder="0" :style="{height:Height + 'px'}"></iframe>
+      </div>
+    </div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -124,6 +129,43 @@
             self.source = res.vc_source
             self.content = res.artcontent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
             self.CreateTime = res.c_createdate
+          })
+          break;
+        case 'zgfy': // 司法文件中的最高法院指导文件
+          api.fetchCourtHighestGuideFileInfo(self.$route.params.id).then(function (res) {
+            self.title = res.Title
+            self.source = res.Source
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.CreateTime = res.c_createdate
+          })
+          break;
+        case 'zjsf': // 司法文件中的浙江省法院指导文件
+          api.fetchCourtGuideFileInfo(self.$route.params.id).then(function (res) {
+            self.title = res.Title
+            self.source = res.Source
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.CreateTime = res.c_createdate
+          })
+          break;
+        case 'lags': // 立案公示
+          api.fetchCommuteGSInfo(self.$route.params.id).then(function (res) {
+            self.title = res.Title
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.CreateTime = res.c_createdate
+          })
+          break;
+        case 'ktgg': // 减刑假释中的开庭公告
+          api.fetchExecuteInformationInfo(self.$route.params.id).then(function (res) {
+            self.title = res.NoticeTitle
+            self.content = res.NoticeContent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.CreateTime = res.c_createdate
+          })
+          break;
+        case 'cpws': // 减刑假释中的开庭公告
+          api.fetchCommuteParoleDocumentInfo(self.$route.params.id).then(function (res) {
+            console.log(res)
+            self.AH = res.AH
+            self.DocumentHtmlPath = res.DocumentHtmlPath
           })
           break;
       }
