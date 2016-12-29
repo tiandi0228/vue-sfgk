@@ -191,3 +191,33 @@ export function fetchCommuteParoleDocumentList(limit) {
 export function fetchCommuteParoleDocumentInfo(id) {
   return fetch(`GetCommuteParoleDocumentInfo.php?id=${id}`)
 }
+
+// 获取诉讼案件信息查询列表
+export function fetchLitigationList(limit) {
+  return fetch(`getLitigationList.php?pagesize=${limit}`)
+}
+
+// 获取诉讼案件信息案号查询列表
+export function postCaseForLitigationByAH(ah) {
+  return post(`getCaseForLitigationByAH.php`, ah)
+}
+
+// 根据案号和密码查看诉讼案件信息
+export function postLitigationCaseByAH(obj) {
+  return post(`getLitigationCaseByAH.php`, obj)
+}
+
+// 获取执行案件信息查询列表
+export function fetchExecuteList(limit) {
+  return fetch(`getExecuteList.php?pagesize=${limit}`)
+}
+
+// 获取执行案件信息案号查询列表
+export function postCaseForExecuteByAH(ah) {
+  return post(`getCaseForExecuteByAH.php`, ah)
+}
+
+// 根据案号和密码查看执行案件信息
+export function postExecuteCaseByAH(obj) {
+  return post(`getExecuteCaseByAH.php`, obj)
+}

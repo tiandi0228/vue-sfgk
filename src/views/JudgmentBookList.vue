@@ -11,8 +11,7 @@
         <select v-model="cbfy">
           <option v-for="(zy,index) in selection" :value="zy.text" :selected="index === 0 ? true : false">{{zy.text}}</option>
         </select>
-        <mu-text-field v-model="ah" hintText="请输入案号" />
-        <mu-text-field v-model="key" hintText="请输入关键字" />
+        <p><mu-text-field v-model="ah" hintText="请输入案号" /> <mu-text-field v-model="key" hintText="请输入关键字" /></p>
         <mu-date-picker v-model="startDate" hintText="选择起始时间" />
         <mu-date-picker v-model="endDate" hintText="选择结束时间" />
         <button>搜索</button>
@@ -72,8 +71,6 @@
         }, {
           text: '杭州市',
           ZY: [{
-            text: '浙江省高级人民法院'
-          }, {
             text: '杭州市中级人民法院'
           }, {
             text: "杭州市上城区人民法院"
@@ -352,6 +349,7 @@
       // 搜索列表
       searchList() {
         self = this
+        console.log(self.cbfy)
         api.postJudgmentBookList({
           'ajbs': self.ajbs === '全部' ? '' : self.ajbs,
           'cbfy': self.cbfy,
@@ -400,8 +398,9 @@
   }
   
   .judgment-book-list .search .mu-text-field {
-    width: 100%;
+    width: 47.4%;
     clear: both;
+    margin-right: 2%;
   }
   
   .judgment-book-list .search .mu-date-picker {

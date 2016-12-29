@@ -118,5 +118,12 @@ export default new VueRouter({
       auth: false
     },
     component: resolve => require(['../views/CaseQueryList.vue'], resolve)
+  }, {
+    path: '/12368',
+    name: '12368',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/12368.vue'], resolve)
   }]
 })
