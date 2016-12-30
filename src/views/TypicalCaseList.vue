@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="list" :style="{height:Height + 'px'}">
+  <div class="list">
     <ul v-if="TypicalCaseList">
       <router-link v-for="list in TypicalCaseList" :to="{path: '/detail/' + list.NoticeId + '/case'}" tag="li">
         <span>{{list.NoticeTitle}}</span>
@@ -12,7 +12,7 @@
         <em>{{list.Time}}</em>
       </router-link>
     </ul>
-    <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" :loadingText="loadingText" />
+    <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -25,12 +25,9 @@
       return {
         TypicalCaseList: [],
         limit: 30,
-        loading: false,
-        scroller: null,
-        loadingText: '加载中……',
-        Height: '',
         tab: this.$route.params.tab,
-        NoticeTZList: []
+        NoticeTZList: [],
+        isloading: false
       }
     },
     created() {
@@ -43,10 +40,6 @@
           self.getNoticeTZList()
           break;
       }
-      self.Height = document.body.scrollHeight - 60
-    },
-    mounted() {
-      this.scroller = this.$el
     },
     methods: {
       // 典型案例列表
@@ -67,7 +60,8 @@
       },
       // 更多加载
       loadMore() {
-        this.loading = true
+        this.isloading = true
+        this.limit += 10
         setTimeout(() => {
           switch (this.tab) {
             case 'dxal': // 典型案例
@@ -77,9 +71,8 @@
               this.getNoticeTZList()
               break;
           }
-          this.limit += 10
-          this.loading = false
-        }, 2000)
+          this.isloading = false
+        }, 1000)
       }
     }
   }
@@ -88,8 +81,7 @@
 <style lang="less" scoped>
   .list {
     margin-bottom: 60px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    padding: 10px 10px 0 10px;
   }
   
   .list li {

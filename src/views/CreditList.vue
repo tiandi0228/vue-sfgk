@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="credit-list" :style="{height:Height + 'px'}">
+  <div class="credit-list">
     <mu-tabs :value="activeTab" @change="handleTabChange">
       <mu-tab value="tab1" title="个人未履行生效裁判信息" />
       <mu-tab value="tab2" title="单位未履行生效裁判信息" />
@@ -33,7 +33,6 @@
           <p style="padding-top:10px;">曝光时间：{{list.BGRQ}}</p>
         </li>
       </ul>
-      <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" :loadingText="loadingText" />
     </div>
     <div v-if="activeTab === 'tab2'">
       <div class="search">
@@ -64,8 +63,8 @@
           <p style="padding-top:10px;">曝光时间：{{list.BGRQ}}</p>
         </li>
       </ul>
-      <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" :loadingText="loadingText" />
     </div>
+    <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -397,27 +396,20 @@
         }],
         reallyName: '',
         credentialsNumber: '',
-        cbfy: '',
+        cbfy: '全部',
         ah: '',
         startDate: '',
         endDate: '',
         limit: 10,
-        loading: false,
-        scroller: null,
-        loadingText: '加载中……',
-        Height: '',
         GRlists: [],
         DWlists: [],
-        activeTab: 'tab1'
+        activeTab: 'tab1',
+        isloading: false
       }
     },
     created() {
       this.searchGRList()
       this.searchDWList()
-      this.Height = document.body.scrollHeight - 60
-    },
-    mounted() {
-      this.scroller = this.$el
     },
     methods: {
       // 搜索个人列表
@@ -456,12 +448,12 @@
       },
       // 更多加载
       loadMore() {
-        this.loading = true
+        this.isloading = true
+        this.limit += 10
         setTimeout(() => {
           this.searchGRList()
           this.searchDWList()
-          this.limit += 10
-          this.loading = false
+          this.isloading = false
         }, 1000)
       },
       //切换tab
@@ -475,8 +467,6 @@
 <style lang="less" scoped>
   .credit-list {
     margin-bottom: 60px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
   }
   
   .credit-list .tab {

@@ -55,8 +55,7 @@
 <style lang="less" scoped>
   .list {
     margin-bottom: 60px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    padding: 10px 10px 0 10px;
   }
   
   .list li {

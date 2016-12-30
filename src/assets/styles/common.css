@@ -243,3 +243,14 @@ th {
 * {
   box-sizing: border-box
 }
+
+.loading {
+  width: 90%;
+  height: 40px;
+  background: #fff;
+  color: #000;
+  border: none;
+  margin: 5px auto 10px auto;
+  text-align: center;
+  line-height: 40px;
+}

@@ -28,7 +28,7 @@
     padding: 20px 0 10px 0;
     border-radius: 20px;
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 50%;
     margin-left: -40%;
   }

@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="case-query-list" :style="{height:Height + 'px'}">
+  <div class="case-query-list">
     <div class="search">
       <form v-on:submit.prevent="searchList">
         <p>案号：(
@@ -43,7 +43,7 @@
         <p><span style="float:left;font-size:12px;">案件状态：<em>{{list.AJZT}}</em></span><span style="float:right;font-size:12px;">立案时间：<em>{{list.LARQ}}</em></span></p>
       </li>
     </ul>
-    <div class="info" v-show="isinfo" v-if="tab === 'ssaj'" :style="{height:Height + 'px'}">
+    <div class="info" v-show="isinfo" v-if="tab === 'ssaj'">
       <div class="icon iconfont icon-close" @click="close()"></div>
       <h2>案件基本信息</h2>
       <div class="info-con">
@@ -55,7 +55,7 @@
         </ul>
       </div>
     </div>
-    <div v-else class="info" :style="{height:Height + 'px'}" v-show="isinfo">
+    <div v-else class="info">
       <div class="icon iconfont icon-close" @click="close()"></div>
       <h2>案件基本信息</h2>
       <div class="info-con">
@@ -82,7 +82,7 @@
       <button @click="submitPwd">确认</button>
     </div>
     <div class="make" v-show="ispwd"></div>
-    <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" :loadingText="loadingText" />
+    <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -97,10 +97,7 @@
         AH_BH: '',
         pwd: '',
         limit: 10,
-        loading: false,
-        scroller: null,
-        loadingText: '加载中……',
-        Height: '',
+        isloading: false,
         lists: [],
         list: {},
         islists: true,
@@ -118,11 +115,6 @@
       } else {
         this.getExecuteList()
       }
-
-      this.Height = document.body.scrollHeight - 60
-    },
-    mounted() {
-      this.scroller = this.$el
     },
     methods: {
       // 诉讼案件列表
@@ -139,6 +131,7 @@
           self.lists = res.Data.informationmodels
         })
       },
+      // 条件搜索
       searchList() {
         self = this
         let ah = '(' + self.AH_NH + ')' + self.AH_ZH + self.AH_BH + '号'
@@ -160,10 +153,12 @@
           })
         }
       },
+      // 点击弹出输入密码框
       go(ah) {
         this.ispwd = true
         this.p.push(ah)
       },
+      // 输入密码
       submitPwd() {
         self = this
         if (self.pwd === '') return
@@ -172,6 +167,7 @@
             'AH': self.p[0],
             'CXMM': self.pwd
           }).then(function (res) {
+            self.p.splice(0, 1)
             if (res.Description === '密码不正确') return
             self.info = res.Data
             self.isinfo = true
@@ -182,6 +178,7 @@
             'AH': self.p[0],
             'CXMM': self.pwd
           }).then(function (res) {
+            self.p.splice(0, 1)
             if (res.Description === '密码不正确') return
             self.info = res.Data
             self.isinfo = true
@@ -189,17 +186,18 @@
           })
         }
       },
+      // 关闭
       close() {
         this.isinfo = false
         this.ispwd = false
       },
       // 更多加载
       loadMore() {
-        this.loading = true
+        this.isloading = true
+        this.limit += 10
         setTimeout(() => {
           this.getLitigationList()
-          this.limit += 10
-          this.loading = false
+          this.isloading = false
         }, 1000)
       }
     }
@@ -209,8 +207,6 @@
 <style lang="less" scoped>
   .case-query-list {
     margin-bottom: 60px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
   }
   
   .case-query-list .search {

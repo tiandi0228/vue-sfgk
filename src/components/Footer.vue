@@ -16,6 +16,7 @@
   padding: 10px 0;
   background-color: #04a8c4;
   font-size: 12px;
+  z-index: 99;
 }
 .footer p{
   padding: 3px;

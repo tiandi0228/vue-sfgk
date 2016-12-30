@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="notice-kt-list" :style="{height:Height + 'px'}">
+  <div class="notice-kt-list">
     <div class="search">
       <form v-on:submit.prevent="searchList">
         <select v-model="cbfy">
@@ -29,7 +29,7 @@
         <p style="padding-top:10px;">开庭时间：{{list.KTRQ}}</p>
       </li>
     </ul>
-    <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" :loadingText="loadingText" />
+    <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -39,7 +39,6 @@
     name: 'notice-kt-list',
     data() {
       return {
-        fy: '全部',
         fy: [{
           text: '全部',
           value: ''
@@ -366,19 +365,12 @@
         startDate: '',
         endDate: '',
         limit: 10,
-        loading: false,
-        scroller: null,
-        loadingText: '加载中……',
-        Height: '',
-        lists: []
+        lists: [],
+        isloading: false
       }
     },
     created() {
       this.searchList()
-      this.Height = document.body.scrollHeight - 60
-    },
-    mounted() {
-      this.scroller = this.$el
     },
     methods: {
       // 搜索列表
@@ -399,11 +391,11 @@
       },
       // 更多加载
       loadMore() {
-        this.loading = true
+        this.isloading = true
+        this.limit += 10
         setTimeout(() => {
           this.searchList()
-          this.limit += 10
-          this.loading = false
+          this.isloading = false
         }, 1000)
       }
     }
@@ -413,8 +405,6 @@
 <style lang="less" scoped>
   .notice-kt-list {
     margin-bottom: 60px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
   }
   
   .notice-kt-list .search {
@@ -452,6 +442,8 @@
     width: 100%;
     clear: both;
     height: 40px;
+    background: #20afc5;
+    color: #fff;
   }
   
   .notice-kt-list li {

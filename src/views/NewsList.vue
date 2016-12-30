@@ -1,11 +1,11 @@
 <template lang="html">
-  <div class="news-list" :style="{height:Height + 'px'}">
+  <div class="news-list">
     <ul>
       <router-link v-for="list in lists" :to="{path: '/detail/' + list.artid + '/news'}" tag="li">
         {{list.title}}
       </router-link>
     </ul>
-    <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" :loadingText="loadingText" />
+    <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -17,18 +17,12 @@
       return {
         id: this.$route.params.id,
         limit: 30,
-        loading: false,
-        scroller: null,
-        loadingText: '加载中……',
-        lists: []
+        lists: [],
+        isloading: false
       }
     },
     created() {
       this.getNewsList()
-      this.Height = document.body.scrollHeight - 60
-    },
-    mounted() {
-      this.scroller = this.$el
     },
     methods: {
       // 新闻动态/图片新闻
@@ -40,12 +34,12 @@
       },
       // 更多加载
       loadMore() {
-        this.loading = true
+        this.isloading = true
+        this.limit += 10
         setTimeout(() => {
           this.getNewsList()
-          this.limit += 10
-          this.loading = false
-        }, 2000)
+          this.isloading = false
+        }, 1000)
       }
     }
   }
@@ -54,8 +48,7 @@
 <style lang="less" scoped>
   .news-list {
     margin-bottom: 60px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    padding: 10px;
   }
   
   .news-list li {

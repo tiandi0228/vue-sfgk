@@ -9,6 +9,7 @@
         <router-link v-for="list in list.list" :to="{path: '/detail/' + list.name + '/map'}" tag="li">{{list.name}}</router-link>
       </ul>
     </template>
+    <vFooter></vFooter>
   </div>
 </template>
 <script>

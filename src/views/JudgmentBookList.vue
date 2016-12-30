@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="judgment-book-list" :style="{height:Height + 'px'}">
+  <div class="judgment-book-list">
     <div class="search">
       <form v-on:submit.prevent="searchList">
         <select v-model="ajbs">
@@ -23,7 +23,7 @@
         <em>查看详情</em>
       </router-link>
     </ul>
-    <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" :loadingText="loadingText" />
+    <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -321,11 +321,8 @@
         startDate: '',
         endDate: '',
         limit: 20,
-        loading: false,
-        scroller: null,
-        loadingText: '加载中……',
-        Height: '',
-        lists: []
+        lists: [],
+        isloading: false
       }
     },
     computed: {
@@ -340,16 +337,11 @@
     },
     created() {
       this.searchList()
-      this.Height = document.body.scrollHeight - 60
-    },
-    mounted() {
-      this.scroller = this.$el
     },
     methods: {
       // 搜索列表
       searchList() {
         self = this
-        console.log(self.cbfy)
         api.postJudgmentBookList({
           'ajbs': self.ajbs === '全部' ? '' : self.ajbs,
           'cbfy': self.cbfy,
@@ -365,11 +357,11 @@
       },
       // 更多加载
       loadMore() {
-        this.loading = true
+        this.isloading = true
+        this.limit += 10
         setTimeout(() => {
           this.searchList()
-          this.limit += 10
-          this.loading = false
+          this.isloading = false
         }, 1000)
       }
     }
@@ -379,8 +371,6 @@
 <style lang="less" scoped>
   .judgment-book-list {
     margin-bottom: 60px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
   }
   
   .judgment-book-list .search {
@@ -398,7 +388,7 @@
   }
   
   .judgment-book-list .search .mu-text-field {
-    width: 47.4%;
+    width: 46%;
     clear: both;
     margin-right: 2%;
   }
@@ -414,10 +404,13 @@
     width: 100%;
     clear: both;
     height: 40px;
+    background: #20afc5;
+    color: #fff;
   }
   
   .judgment-book-list ul {
     padding: 10px;
+    overflow: hidden;
   }
   
   .judgment-book-list li {
