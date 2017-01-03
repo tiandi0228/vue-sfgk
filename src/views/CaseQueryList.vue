@@ -55,7 +55,7 @@
         </ul>
       </div>
     </div>
-    <div v-else class="info">
+    <div v-else class="info" v-show="isinfo">
       <div class="icon iconfont icon-close" @click="close()"></div>
       <h2>案件基本信息</h2>
       <div class="info-con">
