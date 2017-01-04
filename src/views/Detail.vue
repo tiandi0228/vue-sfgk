@@ -28,8 +28,8 @@
     <div class="news" v-if="this.$route.params.tab === 'news'">
       <h2>{{vc_title}}</h2>
       <div style="text-align: center;padding-bottom:10px;">
-        <span>来源：{{source}}</span>
-        <span style="padding-left: 10px;">发布时间：{{CreateTime}}</span>
+        <span style="font-size: 12px;">来源：{{source}}</span>
+        <span style="padding-left: 10px;font-size: 12px;">发布时间：{{CreateTime}}</span>
       </div>
       <div v-html="content"></div>
     </div>
@@ -163,7 +163,6 @@
           break;
         case 'cpws': // 减刑假释中的开庭公告
           api.fetchCommuteParoleDocumentInfo(self.$route.params.id).then(function (res) {
-            console.log(res)
             self.AH = res.AH
             self.DocumentHtmlPath = res.DocumentHtmlPath
           })

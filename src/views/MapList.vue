@@ -23,7 +23,7 @@
     },
     created() {
       self = this
-      // 法院列表
+        // 法院列表
       api.fetchMapList().then(function (res) {
         self.lists = res.data
       })
@@ -37,8 +37,12 @@
 
 </script>
 <style lang="less" scoped>
+  .map-list {
+    margin-bottom: 60px;
+  }
+  
   .map-list .list {
-    line-height: 30px;
+    line-height: 40px;
     background: #fff;
     border-bottom: 1px #ccc solid;
     color: #333;
@@ -55,5 +59,7 @@
   .map-list .list .icon {
     float: right;
   }
-
+  .map-list li{
+    padding: 0 10px;
+  }
 </style>

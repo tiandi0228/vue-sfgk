@@ -119,7 +119,7 @@ export function fetchNoticeSDInfo(id) {
 
 // 获取新闻列表
 export function fetchCourtDTList(id, limit) {
-  return fetch(`GetCourtDTList.php?catalogid=${id}&pagesize=${limit}`)
+  return fetch(`GetCourtDTList.php?catalogid=${id}&pagenum=${limit}`)
 }
 
 // 获取新闻详细页

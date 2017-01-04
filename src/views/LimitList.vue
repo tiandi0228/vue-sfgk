@@ -456,6 +456,7 @@
     padding: 10px;
     background: #fff;
     margin-bottom: 10px;
+    padding-top: 60px;
   }
   
   .credit-list .search select {

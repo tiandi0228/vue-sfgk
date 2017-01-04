@@ -491,6 +491,7 @@
     padding: 10px;
     background: #fff;
     margin-bottom: 10px;
+    padding-top: 60px;
   }
   
   .credit-list .search select {
@@ -502,7 +503,7 @@
   }
   
   .credit-list .search .mu-text-field {
-    width: 47.4%;
+    width: 46%;
     clear: both;
     margin-right: 2%;
   }

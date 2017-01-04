@@ -30,6 +30,7 @@
 <style lang="less" scoped>
   .news-list {
     margin-bottom: 60px;
+    padding: 10px 10px 0 10px;
   }
   
   .news-list li {

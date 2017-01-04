@@ -254,3 +254,8 @@ th {
   text-align: center;
   line-height: 40px;
 }
+
+.mu-tabs {
+  position: fixed;
+  background: #04a8c4;
+}
