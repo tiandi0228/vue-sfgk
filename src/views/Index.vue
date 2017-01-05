@@ -17,20 +17,20 @@
 </template>
 <script>
   export default {
-    name: 'menu',
+    name: 'menu'
   }
 
 </script>
 <style lang="less" scoped>
   .menu ul {
     background: #01c8ea;
-    width: 80%;
+    width: 90%;
     padding: 20px 0 10px 0;
     border-radius: 20px;
     position: absolute;
     top: 10%;
     left: 50%;
-    margin-left: -40%;
+    margin-left: -45%;
   }
   
   .menu li {

@@ -4,12 +4,12 @@
       <h2>{{title}}</h2>
       <div class="content" v-html="content"></div>
     </div>
-    <div v-if="mapData">
+    <div class="mapData" v-if="mapData">
       <h2>{{mapData.department}}</h2>
       <p v-if="mapData.address">联系地址:{{mapData.address}}</p>
       <p v-if="mapData.code">邮政编码:{{mapData.code}}</p>
-      <p v-if="mapData.tsdh">投诉电话:{{mapData.tsdh}}</p>
-      <p v-if="mapData.xfdh">信访电话:{{mapData.xfdh}}</p>
+      <p v-if="mapData.tsdh">投诉电话:<a :href="'tel:' + mapData.tsdh ">{{mapData.tsdh}}</a></p>
+      <p v-if="mapData.xfdh">信访电话:<a :href="'tel:' + mapData.xfdh ">{{mapData.xfdh}}</a></p>
     </div>
     <div class="judgment" v-if="this.$route.params.tab === 'judgmentbook'">
       <h2>{{AH}}</h2>
@@ -69,13 +69,15 @@
         case 'sscs': // 诉讼常识
           api.fetchSscsInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.content
           })
           break;
         case 'case': // 典型案例
           api.fetchTypicalCaseInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.Content
           })
           break;
         case 'map': // 法院地图
@@ -86,19 +88,22 @@
         case 'zxcs': // 执行常识
           api.fetchZxcsInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.content
           })
           break;
         case 'zxgzxgflgd': // 执行工作相关法律规定
           api.fetchZxgzflgdInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.content
           })
           break;
         case 'zjgyzxgd': // 浙江高院执行工作
           api.fetchZjgyzxgdInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.content
           })
           break;
         case 'judgmentbook': // 裁判文书
@@ -112,14 +117,16 @@
         case 'tzgg': // 听证公告
           api.fetchNoticeTZInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.Content
           })
           break;
         case 'sdgg': // 送达公告
           api.fetchNoticeSDInfo(self.$route.params.id).then(function (res) {
             self.AH = res.CaseNo
             self.Time = res.Time
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.Content
             self.Court = res.Court
           })
           break;
@@ -127,7 +134,8 @@
           api.fetchCourtDTContent(self.$route.params.id).then(function (res) {
             self.vc_title = res.vc_title
             self.source = res.vc_source
-            self.content = res.artcontent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.artcontent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.artcontent
             self.CreateTime = res.c_createdate
           })
           break;
@@ -135,7 +143,8 @@
           api.fetchCourtHighestGuideFileInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
             self.source = res.Source
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.Content
             self.CreateTime = res.c_createdate
           })
           break;
@@ -143,21 +152,24 @@
           api.fetchCourtGuideFileInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
             self.source = res.Source
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.Content
             self.CreateTime = res.c_createdate
           })
           break;
         case 'lags': // 立案公示
           api.fetchCommuteGSInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.Content
             self.CreateTime = res.c_createdate
           })
           break;
         case 'ktgg': // 减刑假释中的开庭公告
           api.fetchExecuteInformationInfo(self.$route.params.id).then(function (res) {
             self.title = res.NoticeTitle
-            self.content = res.NoticeContent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.NoticeContent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = res.NoticeContent
             self.CreateTime = res.c_createdate
           })
           break;
@@ -186,6 +198,10 @@
   .detail .judgment p {
     text-align: center;
     padding-bottom: 10px;
+  }
+  
+  .detail .mapData p {
+    line-height: 40px;
   }
 
 </style>

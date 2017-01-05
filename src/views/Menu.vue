@@ -21,7 +21,7 @@
     <ul v-if="this.$route.params.id === '5'">
       <router-link :to="{path: '/creditList'}" tag="li"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>曝光台</span></router-link>
       <router-link :to="{path: '/limitList'}" tag="li"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>执行惩戒</span></router-link>
-      <li><a href="http://www.zjsfgkw.cn/Execute/EnforceeListBlock"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>失信被执行人名单</span></a></li>
+      <router-link :to="{path: '/menu/11'}" tag="li"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>失信被执行人名单</span></router-link>
       <li><a href="http://www.zjsfgkw.cn/Execute/ExecuteReport"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>执行举报</span></a></li>
     </ul>
     <ul v-if="this.$route.params.id === '6'">
@@ -49,6 +49,10 @@
       <li><a href="http://www.rmfysszc.gov.cn/statichtml/rm_sindex/100/rm_sindex.shtml"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>司法拍卖公告</span></a></li>
       <li><a href="http://www.taobao.com/go/act/sf/zhejiang.php?spm=a213w.3064813.0.0.aomtJB"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>淘宝“拍卖会”司法拍卖</span></a></li>
     </ul>
+    <ul v-if="this.$route.params.id === '11'">
+      <li><a href="http://zhixing.court.gov.cn/search/"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>全国法院被执行人信息查询</span></a></li>
+      <li><a href="http://shixin.court.gov.cn"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>全国法院失信被执行人名单信息公布与查询</span></a></li>
+    </ul>
     <vFooter></vFooter>
   </div>
 </template>
@@ -61,13 +65,13 @@
 <style lang="less" scoped>
   .menu ul {
     background: #01c8ea;
-    width: 80%;
+    width: 90%;
     padding: 20px 0 10px 0;
     border-radius: 20px;
     position: absolute;
-    top: 30%;
+    top: 10%;
     left: 50%;
-    margin-left: -40%;
+    margin-left: -45%;
   }
   
   .menu li {

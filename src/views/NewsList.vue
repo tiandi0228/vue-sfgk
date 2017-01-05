@@ -29,7 +29,6 @@
       getNewsList() {
         self = this
         api.fetchCourtDTList(self.id, self.page).then(function (res) {
-          console.log(res.ArticleList)
           self.lists = res.ArticleList
         })
       },

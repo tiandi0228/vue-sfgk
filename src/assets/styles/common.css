@@ -259,3 +259,9 @@ th {
   position: fixed;
   background: #04a8c4;
 }
+
+.detail .content p img,.news img{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
