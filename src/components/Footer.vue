@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <p>浙江省高级人民法院</p>
-    <p>地址：杭州市马路5号</p>
+    <p>地址：杭州市马塍路5号</p>
   </div>
 </template>
 

@@ -127,7 +127,8 @@
   
   .credit-list form {
     overflow: hidden;
-    margin: 10px 0 0 10px;
+    margin: 0 0 0 10px;
+    padding: 60px 0 0 0;
   }
   
   .credit-list form select {
