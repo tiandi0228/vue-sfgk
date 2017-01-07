@@ -38,7 +38,6 @@
         <iframe :src="'http://www.zjsfgkw.cn/attachment/paroleDocument/'+DocumentHtmlPath" style="width:100%;" frameborder="0" :style="{height:Height + 'px'}"></iframe>
       </div>
     </div>
-    <vFooter></vFooter>
   </div>
 </template>
 <script>
@@ -69,15 +68,15 @@
         case 'sscs': // 诉讼常识
           api.fetchSscsInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            // self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.content
+            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.content
           })
           break;
         case 'case': // 典型案例
           api.fetchTypicalCaseInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.Content
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content
           })
           break;
         case 'map': // 法院地图
@@ -88,22 +87,22 @@
         case 'zxcs': // 执行常识
           api.fetchZxcsInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            // self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.content
+            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.content
           })
           break;
         case 'zxgzxgflgd': // 执行工作相关法律规定
           api.fetchZxgzflgdInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            // self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.content
+            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.content
           })
           break;
         case 'zjgyzxgd': // 浙江高院执行工作
           api.fetchZjgyzxgdInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            // self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.content
+            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.content
           })
           break;
         case 'judgmentbook': // 裁判文书
@@ -117,16 +116,16 @@
         case 'tzgg': // 听证公告
           api.fetchNoticeTZInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.Content
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content
           })
           break;
         case 'sdgg': // 送达公告
           api.fetchNoticeSDInfo(self.$route.params.id).then(function (res) {
             self.AH = res.CaseNo
             self.Time = res.Time
-            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.Content
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content
             self.Court = res.Court
           })
           break;
@@ -134,8 +133,8 @@
           api.fetchCourtDTContent(self.$route.params.id).then(function (res) {
             self.vc_title = res.vc_title
             self.source = res.vc_source
-            // self.content = res.artcontent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.artcontent
+            self.content = res.artcontent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.artcontent
             self.CreateTime = res.c_createdate
           })
           break;
@@ -143,8 +142,8 @@
           api.fetchCourtHighestGuideFileInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
             self.source = res.Source
-            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.Content
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content
             self.CreateTime = res.c_createdate
           })
           break;
@@ -152,24 +151,24 @@
           api.fetchCourtGuideFileInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
             self.source = res.Source
-            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.Content
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content
             self.CreateTime = res.c_createdate
           })
           break;
         case 'lags': // 立案公示
           api.fetchCommuteGSInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            // self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.Content
+            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.Content
             self.CreateTime = res.c_createdate
           })
           break;
         case 'ktgg': // 减刑假释中的开庭公告
           api.fetchExecuteInformationInfo(self.$route.params.id).then(function (res) {
             self.title = res.NoticeTitle
-            // self.content = res.NoticeContent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
-            self.content = res.NoticeContent
+            self.content = res.NoticeContent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            // self.content = res.NoticeContent
             self.CreateTime = res.c_createdate
           })
           break;
@@ -186,8 +185,8 @@
 </script>
 <style lang="less" scoped>
   .detail {
-    margin-bottom: 60px;
     padding: 0 10px;
+    background: #fff;
   }
   
   .detail h2 {

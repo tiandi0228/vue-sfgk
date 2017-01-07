@@ -119,10 +119,12 @@
 <style lang="less" scoped>
   .credit-list {
     margin-bottom: 60px;
+    background: #fff;
+    padding-bottom: 10px;
   }
   
   .credit-list ul {
-    padding-top: 20px;
+    padding: 20px 10px 10px 10px;
   }
   
   .credit-list form {
@@ -146,16 +148,17 @@
     height: 40px;
     color: #000;
     margin-left: 10px;
+    background: #04a8c4;
+    color: #fff;
   }
   
   .credit-list li {
     line-height: 30px;
-    max-width: 90%;
+    width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    border-bottom: 1px #e3e3e3 solid;
     display: block;
-    padding: 0 15px;
+    padding: 5px 0;
   }
 
 </style>

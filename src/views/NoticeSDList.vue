@@ -13,8 +13,7 @@
     </div>
     <ul>
       <router-link v-for="list in lists" :to="{path: '/detail/' + list.NoticeSDId + '/sdgg'}" tag="li">
-        <span>{{list.CaseNo}}</span>
-        <em>查看详情</em>
+        {{list.CaseNo}}
       </router-link>
     </ul>
     <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
@@ -324,6 +323,8 @@
 <style lang="less" scoped>
   .judgment-book-list {
     margin-bottom: 60px;
+    background: #fff;
+    padding-bottom: 10px;
   }
   
   .judgment-book-list .search {
@@ -358,25 +359,17 @@
     color: #fff;
   }
   
+  .judgment-book-list ul {
+    padding-bottom: 10px;
+  }
+  
   .judgment-book-list li {
     line-height: 30px;
+    width: 100%;
     overflow: hidden;
-    padding: 0 10px;
-  }
-  
-  .judgment-book-list span {
-    float: left;
-    max-width: 70%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-  }
-  
-  .judgment-book-list em {
-    float: right;
-    max-width: 30%;
-    font-style: normal;
+    border-bottom: 1px #e3e3e3 solid;
+    display: block;
+    padding: 5px 0;
   }
 
 </style>

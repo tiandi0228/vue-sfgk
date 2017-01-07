@@ -1,12 +1,20 @@
 <template lang="html">
   <div class="news-list">
-    <ul>
+    <ul v-if="id === '3'">
       <router-link v-for="list in lists" :to="{path: '/detail/' + list.artid + '/news'}" tag="li">
         {{list.title}}
       </router-link>
     </ul>
-    <div class="pager perv" @click="perv()">上一页</div>
-    <div class="pager next" @click="next()">下一页</div>
+    <ul v-else>
+      <router-link v-for="list in lists" :to="{path: '/detail/' + list.artid + '/news'}" tag="li">
+        <img src="" alt="">
+        <span>{{list.title}}</span>
+      </router-link>
+    </ul>
+    <div class="pager">
+      <span class="perv" @click="perv()">上一页</span>
+      <span class="next" @click="next()">下一页</span>
+    </div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -56,31 +64,43 @@
 </script>
 <style lang="less" scoped>
   .news-list {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     padding: 10px;
+    background: #fff;
   }
   
   .news-list li {
     line-height: 30px;
-    max-width: 90%;
+    width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    border-bottom: 1px #e3e3e3 solid;
     display: block;
+    padding: 5px 0;
   }
-
-  .pager{
+  
+  .news-list li img {
     float: left;
-    width: 49%;
+    width: 20%;
+  }
+  .news-list li span {
+    float: left;
+    width: 80%;
+    display: inline-block;
+  }
+  .pager {
+    width: 100%;
     background: #fff;
     height: 40px;
+    margin-top: 10px;
+  }
+  
+  .pager span {
+    float: left;
+    width: 50%;
     color: #333;
     text-align: center;
     line-height: 40px;
-    margin-top: 10px;
+    display: inline-block;
   }
 
-  .pager.perv{
-    margin-right: 2%;
-  }
 </style>

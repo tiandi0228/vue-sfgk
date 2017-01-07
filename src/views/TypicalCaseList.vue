@@ -2,14 +2,12 @@
   <div class="list">
     <ul v-if="TypicalCaseList">
       <router-link v-for="list in TypicalCaseList" :to="{path: '/detail/' + list.NoticeId + '/case'}" tag="li">
-        <span>{{list.NoticeTitle}}</span>
-        <em>{{list.NoticeDate}}</em>
+        {{list.NoticeTitle}}
       </router-link>
     </ul>
     <ul v-if="NoticeTZList">
       <router-link v-for="list in NoticeTZList" :to="{path: '/detail/' + list.NoticeTZId + '/tzgg'}" tag="li">
-        <span>{{list.Title}}</span>
-        <em>{{list.Time}}</em>
+        {{list.Title}}
       </router-link>
     </ul>
     <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
@@ -81,26 +79,19 @@
 <style lang="less" scoped>
   .list {
     margin-bottom: 60px;
-    padding: 10px 10px 0 10px;
+    background: #fff;
+    padding: 10px;
   }
-  
+  .list ul{
+    padding-bottom: 5px;
+  }
   .list li {
     line-height: 30px;
+    width: 100%;
     overflow: hidden;
-  }
-  
-  .list span {
-    float: left;
-    max-width: 70%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-  }
-  
-  .list em {
-    float: right;
-    max-width: 30%;
+    border-bottom: 1px #e3e3e3 solid;
+    display: block;
+    padding: 5px 0;
   }
 
 </style>

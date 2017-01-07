@@ -247,8 +247,8 @@ th {
 .loading {
   width: 90%;
   height: 40px;
-  background: #fff;
-  color: #000;
+  background: #20afc5;
+  color: #fff;
   border: none;
   margin: 5px auto 10px auto;
   text-align: center;
@@ -260,7 +260,12 @@ th {
   background: #04a8c4;
 }
 
-.detail .content p img,.news img{
+.detail p {
+  text-indent: 2em;
+}
+
+.detail .content p img,
+.news img {
   width: 100%;
   height: 100%;
   display: block;

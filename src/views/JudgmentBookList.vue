@@ -371,6 +371,7 @@
 <style lang="less" scoped>
   .judgment-book-list {
     margin-bottom: 60px;
+    background: #fff;
   }
   
   .judgment-book-list .search {

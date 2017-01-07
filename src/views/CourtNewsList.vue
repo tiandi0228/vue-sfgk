@@ -29,17 +29,18 @@
 </script>
 <style lang="less" scoped>
   .news-list {
-    margin-bottom: 60px;
     padding: 10px 10px 0 10px;
+    margin-bottom: 60px;
+    background: #fff;
   }
   
   .news-list li {
     line-height: 30px;
-    max-width: 90%;
+    width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    border-bottom: 1px #e3e3e3 solid;
     display: block;
+    padding: 5px 0;
   }
 
 </style>

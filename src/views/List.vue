@@ -55,21 +55,17 @@
 <style lang="less" scoped>
   .list {
     margin-bottom: 60px;
-    padding: 10px 10px 0 10px;
+    background: #fff;
+    padding: 10px;
   }
   
   .list li {
     line-height: 30px;
+    width: 100%;
     overflow: hidden;
+    border-bottom: 1px #e3e3e3 solid;
+    display: block;
+    padding: 5px 0;
   }
   
-  .list span {
-    float: left;
-    max-width: 70%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-  }
-
 </style>

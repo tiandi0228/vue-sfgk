@@ -64,7 +64,7 @@
 </script>
 <style lang="less" scoped>
   .menu ul {
-    background: #01c8ea;
+    background: #fff;
     width: 90%;
     padding: 20px 0 10px 0;
     border-radius: 20px;
@@ -75,17 +75,20 @@
   }
   
   .menu li {
-    border: 2px #fff solid;
+    border: 1px #e3e3e3 solid;
     margin: 0 10px 20px 10px;
     border-radius: 20px;
     text-align: center;
     line-height: 40px;
-    background: #a0effb;
-    color: #20afc5;
+    background: #fff;
+    color: #333;
   }
 
   .menu li a{
-      color: #20afc5;
+      color: #333;
   }
-
+  
+  .iconfont{
+    color: #0186d0;
+  }
 </style>

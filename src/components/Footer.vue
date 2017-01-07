@@ -14,7 +14,7 @@
   text-align: center;
   width: 100%;
   padding: 10px 0;
-  background-color: #04a8c4;
+  background-color: #f7f7f7;
   font-size: 12px;
   z-index: 99;
 }
