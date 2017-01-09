@@ -42,6 +42,8 @@
 </template>
 <script>
   import * as api from '../api'
+  import util from '../util'
+
   export default {
     name: 'detail',
     data() {
@@ -68,14 +70,14 @@
         case 'sscs': // 诉讼常识
           api.fetchSscsInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.content)
             // self.content = res.content
           })
           break;
         case 'case': // 典型案例
           api.fetchTypicalCaseInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.Content)
             // self.content = res.Content
           })
           break;
@@ -87,21 +89,21 @@
         case 'zxcs': // 执行常识
           api.fetchZxcsInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.content)
             // self.content = res.content
           })
           break;
         case 'zxgzxgflgd': // 执行工作相关法律规定
           api.fetchZxgzflgdInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.content)
             // self.content = res.content
           })
           break;
         case 'zjgyzxgd': // 浙江高院执行工作
           api.fetchZjgyzxgdInfo(self.$route.params.id).then(function (res) {
             self.title = self.$route.params.id
-            self.content = res.content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.content)
             // self.content = res.content
           })
           break;
@@ -116,7 +118,7 @@
         case 'tzgg': // 听证公告
           api.fetchNoticeTZInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.Content)
             // self.content = res.Content
           })
           break;
@@ -124,7 +126,7 @@
           api.fetchNoticeSDInfo(self.$route.params.id).then(function (res) {
             self.AH = res.CaseNo
             self.Time = res.Time
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.Content)
             // self.content = res.Content
             self.Court = res.Court
           })
@@ -133,7 +135,7 @@
           api.fetchCourtDTContent(self.$route.params.id).then(function (res) {
             self.vc_title = res.vc_title
             self.source = res.vc_source
-            self.content = res.artcontent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.artcontent)
             // self.content = res.artcontent
             self.CreateTime = res.c_createdate
           })
@@ -142,7 +144,7 @@
           api.fetchCourtHighestGuideFileInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
             self.source = res.Source
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.Content)
             // self.content = res.Content
             self.CreateTime = res.c_createdate
           })
@@ -151,7 +153,7 @@
           api.fetchCourtGuideFileInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
             self.source = res.Source
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.Content)
             // self.content = res.Content
             self.CreateTime = res.c_createdate
           })
@@ -159,7 +161,7 @@
         case 'lags': // 立案公示
           api.fetchCommuteGSInfo(self.$route.params.id).then(function (res) {
             self.title = res.Title
-            self.content = res.Content.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.Content)
             // self.content = res.Content
             self.CreateTime = res.c_createdate
           })
@@ -167,7 +169,7 @@
         case 'ktgg': // 减刑假释中的开庭公告
           api.fetchExecuteInformationInfo(self.$route.params.id).then(function (res) {
             self.title = res.NoticeTitle
-            self.content = res.NoticeContent.replace(/style\s*=(['\"\s]?)[^'\"]*?\1/gi, '')
+            self.content = util.removeHTMLTag(res.NoticeContent)
             // self.content = res.NoticeContent
             self.CreateTime = res.c_createdate
           })

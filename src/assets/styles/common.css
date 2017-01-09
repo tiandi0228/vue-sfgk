@@ -262,6 +262,8 @@ th {
 
 .detail p {
   text-indent: 2em;
+  line-height: 2em;
+  padding: 5px 0;
 }
 
 .detail .content p img,
@@ -269,4 +271,13 @@ th {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.mu-text-field-content{
+  padding: 5px 0;
+}
+
+.mu-text-field{
+  margin: 0;
+  min-height: auto;
 }

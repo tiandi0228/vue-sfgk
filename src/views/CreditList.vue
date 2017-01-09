@@ -10,17 +10,24 @@
           <select v-model="cbfy">
             <option v-for="zy in fy" :value="zy.text">{{zy.text}}</option>
           </select>
-          <p><mu-text-field v-model="reallyName" hintText="请输入姓名" /> <mu-text-field v-model="ah" hintText="请输入案号" /></p>
-          <p><mu-text-field style="width: 100%;" v-model="credentialsNumber" hintText="请输入证件号码" /></p>
-          <p><mu-date-picker v-model="startDate" hintText="选择起始时间" />
-          <mu-date-picker v-model="endDate" hintText="选择结束时间" /></p>
+          <p>
+            <mu-text-field v-model="reallyName" hintText="请输入姓名" />
+            <mu-text-field v-model="ah" hintText="请输入案号" />
+          </p>
+          <p>
+            <mu-text-field style="width: 100%;" v-model="credentialsNumber" hintText="请输入证件号码" />
+          </p>
+          <p>
+            <mu-date-picker v-model="startDate" hintText="选择起始时间" />
+            <mu-date-picker v-model="endDate" hintText="选择结束时间" />
+          </p>
           <button>搜索</button>
         </form>
       </div>
       <ul>
         <li v-for="list in GRlists">
-          <p style="padding-bottom:10px;">姓名：{{list.ReallyName}}</p>
-          <p style="padding-bottom:10px;">证件号码：{{list.CredentialsNumber}}</p>
+          <p>姓名：{{list.ReallyName}}</p>
+          <p style="height: 30px;overflow: hidden;">证件号码：{{list.CredentialsNumber}}</p>
           <div class="con">
             <p style="padding-top:10px;">地址：{{list.Address}}</p>
             <p>执行依据：{{list.ZXYJ}}</p>
@@ -40,17 +47,24 @@
           <select v-model="cbfy">
             <option v-for="zy in fy" :value="zy.text">{{zy.text}}</option>
           </select>
-          <p><mu-text-field v-model="reallyName" hintText="请输入姓名" /> <mu-text-field v-model="ah" hintText="请输入案号" /></p>
-          <p><mu-text-field style="width: 100%;" v-model="credentialsNumber" hintText="请输入证件号码" /></p>
-          <p><mu-date-picker v-model="startDate" hintText="选择起始时间" />
-          <mu-date-picker v-model="endDate" hintText="选择结束时间" /></p>
+          <p>
+            <mu-text-field v-model="reallyName" hintText="请输入姓名" />
+            <mu-text-field v-model="ah" hintText="请输入案号" />
+          </p>
+          <p>
+            <mu-text-field style="width: 100%;" v-model="credentialsNumber" hintText="请输入证件号码" />
+          </p>
+          <p>
+            <mu-date-picker v-model="startDate" hintText="选择起始时间" />
+            <mu-date-picker v-model="endDate" hintText="选择结束时间" />
+          </p>
           <button>搜索</button>
         </form>
       </div>
       <ul>
         <li v-for="list in DWlists">
-          <p style="padding-bottom:10px;">姓名：{{list.ReallyName}}</p>
-          <p style="padding-bottom:10px;">证件号码：{{list.CredentialsNumber}}</p>
+          <p>姓名：{{list.ReallyName}}</p>
+          <p style="height: 30px;overflow: hidden;">证件号码：{{list.CredentialsNumber}}</p>
           <div class="con">
             <p style="padding-top:10px;">地址：{{list.Address}}</p>
             <p>执行依据：{{list.ZXYJ}}</p>
@@ -525,6 +539,7 @@
     height: 40px;
     background: #20afc5;
     color: #fff;
+    margin-top: 10PX;
   }
   
   .credit-list li {
@@ -535,6 +550,10 @@
     margin-bottom: 10px;
     color: #333;
     padding: 10px;
+  }
+  
+  .credit-list li p {
+    overflow: hidden;
   }
   
   .credit-list li .con {

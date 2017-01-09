@@ -125,5 +125,12 @@ export default new VueRouter({
       auth: false
     },
     component: resolve => require(['../views/12368.vue'], resolve)
+  }, {
+    path: '/ewm',
+    name: 'ewm',
+    meta: {
+      auth: false
+    },
+    component: resolve => require(['../views/ewm.vue'], resolve)
   }]
 })

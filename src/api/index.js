@@ -117,9 +117,14 @@ export function fetchNoticeSDInfo(id) {
   return fetch(`GetNoticeSDInfo.php?id=${id}`)
 }
 
-// 获取新闻列表
+// 获取法院动态列表
 export function fetchCourtDTList(id, limit) {
   return fetch(`GetCourtDTList.php?catalogid=${id}&pagenum=${limit}`)
+}
+
+// 获取图片新闻列表
+export function fetchGetCourtPICList(id, limit) {
+  return fetch(`GetCourtPICList.php?catalogid=${id}&pagenum=${limit}`)
 }
 
 // 获取新闻详细页
@@ -128,8 +133,8 @@ export function fetchCourtDTContent(id) {
 }
 
 // 获取新闻发布会列表
-export function fetchCourtNewsList(id) {
-  return fetch(`GetCourtNewsList.php?catalogid=${id}`)
+export function fetchCourtNewsList(id, limit) {
+  return fetch(`GetCourtNewsList.php?catalogid=${id}&pagenum=${limit}`)
 }
 
 // 获取曝光台列表

@@ -39,6 +39,7 @@
 <style lang="less" scoped>
   .map-list {
     margin-bottom: 60px;
+    background: #fff;
   }
   
   .map-list .list {
@@ -61,5 +62,6 @@
   }
   .map-list li{
     padding: 0 10px;
+    line-height: 30px;
   }
 </style>

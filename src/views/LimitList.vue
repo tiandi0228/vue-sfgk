@@ -2,7 +2,7 @@
   <div class="credit-list">
     <mu-tabs :value="activeTab" @change="handleTabChange">
       <mu-tab value="tab1" title="限制高消费" />
-      <mu-tab value="tab2" title="限制处境" />
+      <mu-tab value="tab2" title="限制出境" />
       <mu-tab value="tab3" title="限制招投标" />
     </mu-tabs>
     <div v-if="activeTab === 'tab1'">
@@ -464,7 +464,7 @@
     clear: both;
     border: 1px #ccc solid;
     height: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   
   .credit-list .search .mu-text-field {
@@ -490,6 +490,7 @@
     height: 40px;
     background: #20afc5;
     color: #fff;
+    margin-top: 5px;
   }
   
   .credit-list li {
@@ -500,6 +501,10 @@
     margin-bottom: 10px;
     color: #333;
     padding: 10px;
+  }
+  
+  .credit-list li p {
+    overflow: hidden;
   }
   
   .credit-list li .con {

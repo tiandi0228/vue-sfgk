@@ -24,7 +24,7 @@
     name: 'credit-list',
     data() {
       return {
-        limit: 30,
+        limit: 8,
         ZGFYZDWJLists: [],
         ZJSFYZDWJLists: [],
         activeTab: 'tab1',

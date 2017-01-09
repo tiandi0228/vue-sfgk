@@ -19,8 +19,7 @@
     </div>
     <ul>
       <router-link v-for="list in lists" :to="{path: '/detail/' + list.DocumentId + '/judgmentbook'}" tag="li">
-        <span>{{list.AH}}</span>
-        <em>查看详情</em>
+        {{list.AH}}
       </router-link>
     </ul>
     <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
@@ -410,27 +409,17 @@
   }
   
   .judgment-book-list ul {
-    padding: 10px;
+    padding: 0 10px 10px 10px;
     overflow: hidden;
   }
   
   .judgment-book-list li {
     line-height: 30px;
-  }
-  
-  .judgment-book-list span {
-    float: left;
-    max-width: 70%;
+    width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-  }
-  
-  .judgment-book-list em {
-    float: right;
-    max-width: 30%;
-    font-style: normal;
+    border-bottom: 1px #e3e3e3 solid;
+    display: block;
+    padding: 5px 0;
   }
 
 </style>
