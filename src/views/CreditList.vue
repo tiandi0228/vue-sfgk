@@ -24,22 +24,8 @@
           <button>搜索</button>
         </form>
       </div>
-      <ul>
-        <li v-for="list in GRlists">
-          <p>姓名：{{list.ReallyName}}</p>
-          <p style="height: 30px;overflow: hidden;">证件号码：{{list.CredentialsNumber}}</p>
-          <div class="con">
-            <p style="padding-top:10px;">地址：{{list.Address}}</p>
-            <p>执行依据：{{list.ZXYJ}}</p>
-            <p>案号：{{list.AH}}</p>
-            <p>执行案由：{{list.ZXAY}}</p>
-            <p>执行法院：{{list.ZXFY}}</p>
-            <p>未执行金额：{{list.WZXJE}}</p>
-            <p style="padding-bottom:10px;">标的金额：{{list.WZXJE}}</p>
-          </div>
-          <p style="padding-top:10px;">曝光时间：{{list.BGRQ}}</p>
-        </li>
-      </ul>
+      <vCredit :lists="GRlists"></vCredit>
+      <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     </div>
     <div v-if="activeTab === 'tab2'">
       <div class="search">
@@ -61,24 +47,9 @@
           <button>搜索</button>
         </form>
       </div>
-      <ul>
-        <li v-for="list in DWlists">
-          <p>姓名：{{list.ReallyName}}</p>
-          <p style="height: 30px;overflow: hidden;">证件号码：{{list.CredentialsNumber}}</p>
-          <div class="con">
-            <p style="padding-top:10px;">地址：{{list.Address}}</p>
-            <p>执行依据：{{list.ZXYJ}}</p>
-            <p>案号：{{list.AH}}</p>
-            <p>执行案由：{{list.ZXAY}}</p>
-            <p>执行法院：{{list.ZXFY}}</p>
-            <p>未执行金额：{{list.WZXJE}}</p>
-            <p style="padding-bottom:10px;">标的金额：{{list.WZXJE}}</p>
-          </div>
-          <p style="padding-top:10px;">曝光时间：{{list.BGRQ}}</p>
-        </li>
-      </ul>
+      <vCredit :lists="DWlists"></vCredit>
+      <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     </div>
-    <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -465,8 +436,11 @@
         this.isloading = true
         this.limit += 10
         setTimeout(() => {
-          this.searchGRList()
-          this.searchDWList()
+          if (this.activeTab === 'tab1') {
+            this.searchGRList()
+          } else {
+            this.searchDWList()
+          }
           this.isloading = false
         }, 1000)
       },
@@ -541,24 +515,4 @@
     color: #fff;
     margin-top: 10PX;
   }
-  
-  .credit-list li {
-    line-height: 30px;
-    display: block;
-    overflow: hidden;
-    background: #fff;
-    margin-bottom: 10px;
-    color: #333;
-    padding: 10px;
-  }
-  
-  .credit-list li p {
-    overflow: hidden;
-  }
-  
-  .credit-list li .con {
-    border-top: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
-  }
-
 </style>

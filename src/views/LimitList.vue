@@ -25,22 +25,7 @@
           <button>搜索</button>
         </form>
       </div>
-      <ul>
-        <li v-for="list in GXFlists">
-          <p style="padding-bottom:10px;">姓名：{{list.ReallyName}}</p>
-          <p style="padding-bottom:10px;">证件号码：{{list.CredentialsNumber}}</p>
-          <div class="con">
-            <p style="padding-top:10px;">地址：{{list.Address}}</p>
-            <p>执行依据：{{list.ZXYJ}}</p>
-            <p>案号：{{list.AH}}</p>
-            <p>执行案由：{{list.ZXAY}}</p>
-            <p>执行法院：{{list.ZXFY}}</p>
-            <p>未执行金额：{{list.WZXJE}}</p>
-            <p style="padding-bottom:10px;">标的金额：{{list.WZXJE}}</p>
-          </div>
-          <p style="padding-top:10px;">曝光时间：{{list.BGRQ}}</p>
-        </li>
-      </ul>
+      <vCredit :lists="GXFlists"></vCredit>
     </div>
     <div v-if="activeTab === 'tab2'">
       <div class="search">
@@ -62,22 +47,7 @@
           <button>搜索</button>
         </form>
       </div>
-      <ul>
-        <li v-for="list in CJlists">
-          <p style="padding-bottom:10px;">姓名：{{list.ReallyName}}</p>
-          <p style="padding-bottom:10px;">证件号码：{{list.CredentialsNumber}}</p>
-          <div class="con">
-            <p style="padding-top:10px;">地址：{{list.Address}}</p>
-            <p>执行依据：{{list.ZXYJ}}</p>
-            <p>案号：{{list.AH}}</p>
-            <p>执行案由：{{list.ZXAY}}</p>
-            <p>执行法院：{{list.ZXFY}}</p>
-            <p>未执行金额：{{list.WZXJE}}</p>
-            <p style="padding-bottom:10px;">标的金额：{{list.WZXJE}}</p>
-          </div>
-          <p style="padding-top:10px;">曝光时间：{{list.BGRQ}}</p>
-        </li>
-      </ul>
+      <vCredit :lists="CJlists"></vCredit>
     </div>
     <div v-if="activeTab === 'tab3'">
       <div class="search">
@@ -99,22 +69,7 @@
           <button>搜索</button>
         </form>
       </div>
-      <ul>
-        <li v-for="list in ZTBlists">
-          <p style="padding-bottom:10px;">姓名：{{list.ReallyName}}</p>
-          <p style="padding-bottom:10px;">证件号码：{{list.CredentialsNumber}}</p>
-          <div class="con">
-            <p style="padding-top:10px;">地址：{{list.Address}}</p>
-            <p>执行依据：{{list.ZXYJ}}</p>
-            <p>案号：{{list.AH}}</p>
-            <p>执行案由：{{list.ZXAY}}</p>
-            <p>执行法院：{{list.ZXFY}}</p>
-            <p>未执行金额：{{list.WZXJE}}</p>
-            <p style="padding-bottom:10px;">标的金额：{{list.WZXJE}}</p>
-          </div>
-          <p style="padding-top:10px;">曝光时间：{{list.BGRQ}}</p>
-        </li>
-      </ul>
+      <vCredit :lists="ZTBlists"></vCredit>
     </div>
     <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
@@ -415,9 +370,13 @@
         this.isloading = true
         this.limit += 10
         setTimeout(() => {
-          this.searchGXFList()
-          this.searchCJList()
-          this.searchZTBList()
+          if (this.activeTab === 'tab1') {
+            this.searchGXFList()
+          } else if (this.activeTab === 'tab2') {
+            this.searchCJList()
+          } else {
+            this.searchZTBList()
+          }
           this.isloading = false
         }, 1000)
       },
@@ -491,25 +450,6 @@
     background: #20afc5;
     color: #fff;
     margin-top: 5px;
-  }
-  
-  .credit-list li {
-    line-height: 30px;
-    display: block;
-    overflow: hidden;
-    background: #fff;
-    margin-bottom: 10px;
-    color: #333;
-    padding: 10px;
-  }
-  
-  .credit-list li p {
-    overflow: hidden;
-  }
-  
-  .credit-list li .con {
-    border-top: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
   }
 
 </style>

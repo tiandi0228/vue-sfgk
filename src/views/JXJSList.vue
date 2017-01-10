@@ -5,30 +5,31 @@
       <mu-tab value="tab2" title="开庭公告" />
       <mu-tab value="tab3" title="裁判文书" />
     </mu-tabs>
-    <div v-if="activeTab === 'tab1'">
-      <form v-on:submit.prevent="LAGSList">
-        <select v-model="cs">
-            <option v-for="zy in city" :value="zy.name">{{zy.name}}</option>
-        </select>
-        <button>搜索</button>
-      </form>
-      <ul>
-        <router-link v-for="list in LAGSLists" :to="{path: '/detail/' + list.ParoleId + '/lags'}" tag="li">
-          {{list.ParoleTitle}}
-        </router-link>
-      </ul>
+    <div v-if="activeTab === 'tab1'" class="lags">
+      <template v-for="(c,key) in city">
+        <div class="list" @click="LAGSList(c.name,key+1)">
+          <span class="txt">{{c.name}}</span>
+          <span class="icon iconfont icon-up" :class="'icon' + (key+1)"></span>
+        </div>
+        <ul :id="'list' + (key+1)" style="display: none;">
+          <router-link v-for="list in LAGSLists" :to="{path: '/detail/' + list.ParoleId + '/lags'}" tag="li">
+            {{list.ParoleTitle}}
+          </router-link>
+        </ul>
+      </template>
     </div>
     <ul v-if="activeTab === 'tab2'">
       <router-link v-for="list in KTGGLists" :to="{path: '/detail/' + list.NoticeId + '/ktgg'}" tag="li">
         {{list.NoticeTitle}}
       </router-link>
+      <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     </ul>
     <ul v-if="activeTab === 'tab3'">
       <router-link v-for="list in CPWSLists" :to="{path: '/detail/' + list.ParoleDocumentId + '/cpws'}" tag="li">
         {{list.AH}}
       </router-link>
+      <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     </ul>
-    <div class="loading" @click="loadMore()">{{isloading ? '正在加载…' : '加载更多'}}</div>
     <vFooter></vFooter>
   </div>
 </template>
@@ -61,13 +62,13 @@
         }, {
           name: '丽水'
         }],
-        cs: '杭州',
         limit: 30,
         LAGSLists: [],
         KTGGLists: [],
         CPWSLists: [],
         activeTab: 'tab1',
-        isloading: false
+        isloading: false,
+        open: false
       }
     },
     created() {
@@ -77,9 +78,20 @@
     },
     methods: {
       // 获取立案公示列表
-      LAGSList() {
+      LAGSList(city, index) {
         self = this
-        api.fetchCommuteGSList(self.cs).then(function (res) {
+        if (index) {
+          if ($('#list' + index).css('display') == 'none') {
+            $('#list' + index).show()
+            $('.icon' + index).addClass('icon-down')
+            $('.icon' + index).removeClass('icon-up')
+          } else {
+            $('.icon' + index).addClass('icon-up')
+            $('.icon' + index).removeClass('icon-down')
+            $('ul').hide()
+          }
+        }
+        api.fetchCommuteGSList(city).then(function (res) {
           self.LAGSLists = res.objectdata
         })
       },
@@ -102,9 +114,11 @@
         this.isloading = true
         this.limit += 10
         setTimeout(() => {
-          this.LAGSList()
-          this.KTGGList()
-          this.CPWSList()
+          if (this.activeTab === 'tab2') {
+            this.KTGGList()
+          } else {
+            this.CPWSList()
+          }
           this.isloading = false
         }, 1000)
       },
@@ -159,6 +173,38 @@
     border-bottom: 1px #e3e3e3 solid;
     display: block;
     padding: 5px 0;
+  }
+  
+  .lags {
+    padding-top: 50px;
+  }
+  
+  .lags .list {
+    line-height: 40px;
+    background: #fff;
+    border-bottom: 1px #ccc solid;
+    color: #333;
+    border-left: 2px #04a8c4 solid;
+    padding: 0 10px;
+    clear: both;
+    overflow: hidden;
+  }
+  
+  .lags .list .txt {
+    float: left;
+  }
+  
+  .lags .list .icon {
+    float: right;
+  }
+  
+  .lags ul {
+    padding: 0;
+  }
+  
+  .lags li {
+    padding: 0 10px;
+    line-height: 30px;
   }
 
 </style>

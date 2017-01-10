@@ -1,12 +1,12 @@
 <template lang="html">
   <div class="news-list">
-    <slider v-if="id === '4'" :pagination-visible="true" :slides="slides" :repeating="true" :auto="5000">
+    <vSlider v-if="id === '4'" :pagination-visible="true" :slides="slides" :repeating="true" :auto="5000">
       <div class="slider" v-for="(slide,index) in slides" :key="index">
         <router-link :to="{path: '/detail/' + slide.artid + '/news'}" tag="a">
           <img :src="slide.img" />
         </router-link>
       </div>
-    </slider>
+    </vSlider>
     <ul v-if="id === '3' || id === '5'">
       <router-link v-for="list in lists" :to="{path: '/detail/' + list.artid + '/news'}" tag="li">
         {{list.title}} <em v-if="Math.floor((Date.parse(new Date()) - Date.parse(new Date(list.publishtime.substring(0,10)))) / 86400/3600) <= 1">New</em>
@@ -27,11 +27,7 @@
 </template>
 <script>
   import * as api from '../api'
-  import slider from '../components/Slider'
   export default {
-    components: {
-      slider
-    },
     name: 'news-list',
     data() {
       return {
