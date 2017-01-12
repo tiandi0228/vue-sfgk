@@ -31,67 +31,54 @@
     top: 10%;
     left: 50%;
     margin-left: -45%;
-  }
-  
-  .menu li {
-    float: left;
-    border: 1px #e3e3e3 solid;
-    margin: 0 2.5% 20px 2.5%;
-    border-radius: 20px;
-    text-align: center;
-    line-height: 40px;
-    background: #fff;
-    color: #333;
-    width: 45%;
-  }
-  
-  .menu li a {
-    color: #333;
-  }
-  
-  .menu .iconfont {
-    font-size: 24px;
-    margin-right: 5px;
-  }
-  
-  .icon-caipanwenshu {
-    color: #ce3a3c
-  }
-  
-  .icon-paimai {
-    color: #45b35c;
-  }
-  
-  .icon-zhibo {
-    color: #e84b2e;
-  }
-  
-  .icon-jian {
-    color: #0186d0;
-  }
-  
-  .icon-icon4 {
-    color: #0085cf;
-  }
-  
-  .icon-5zhongjiejigoubaise {
-    color: #f96268;
-  }
-  
-  .icon-news-copy {
-    color: #ffca66;
-  }
-  
-  .icon-dengguang {
-    color: #0085cf;
-  }
-  
-  .icon-jinlingyingcaiwangtubiao72 {
-    color: #45b35c;
-  }
-  
-  .icon-gongkai {
-    color: #ce3a3c;
+    li {
+      float: left;
+      border: 1px #e3e3e3 solid;
+      margin: 0 2.5% 20px 2.5%;
+      border-radius: 20px;
+      text-align: center;
+      line-height: 40px;
+      background: #fff;
+      color: #333;
+      width: 45%;
+      a {
+        color: #333;
+      }
+      .iconfont {
+        font-size: 24px;
+        margin-right: 5px;
+      }
+      .icon-caipanwenshu {
+        color: #ce3a3c
+      }
+      .icon-paimai {
+        color: #45b35c;
+      }
+      .icon-zhibo {
+        color: #e84b2e;
+      }
+      .icon-jian {
+        color: #0186d0;
+      }
+      .icon-icon4 {
+        color: #0085cf;
+      }
+      .icon-5zhongjiejigoubaise {
+        color: #f96268;
+      }
+      .icon-news-copy {
+        color: #ffca66;
+      }
+      .icon-dengguang {
+        color: #0085cf;
+      }
+      .icon-jinlingyingcaiwangtubiao72 {
+        color: #45b35c;
+      }
+      .icon-gongkai {
+        color: #ce3a3c;
+      }
+    }
   }
 
 </style>

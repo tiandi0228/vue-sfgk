@@ -27,6 +27,7 @@
       },
     }
   }
+
 </script>
 <style lang="less" scoped>
   .credit li {
@@ -37,14 +38,15 @@
     margin-bottom: 10px;
     color: #333;
     padding: 10px;
+
+    p {
+      overflow: hidden;
+    }
+
+    .con {
+      border-top: 1px #ccc solid;
+      border-bottom: 1px #ccc solid;
+    }
   }
-  
-  .credit li p {
-    overflow: hidden;
-  }
-  
-  .credit li .con {
-    border-top: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
-  }
+
 </style>

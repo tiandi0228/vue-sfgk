@@ -23,7 +23,7 @@
     },
     created() {
       self = this
-        // 法院列表
+      // 法院列表
       api.fetchMapList().then(function (res) {
         self.lists = res.data
       })
@@ -40,28 +40,26 @@
   .map-list {
     margin-bottom: 60px;
     background: #fff;
+    .list {
+      line-height: 40px;
+      background: #fff;
+      border-bottom: 1px #ccc solid;
+      color: #333;
+      border-left: 2px #04a8c4 solid;
+      padding: 0 10px;
+      clear: both;
+      overflow: hidden;
+      .txt {
+        float: left;
+      }
+      .icon {
+        float: right;
+      }
+    }
+    li {
+      padding: 0 10px;
+      line-height: 30px;
+    }
   }
-  
-  .map-list .list {
-    line-height: 40px;
-    background: #fff;
-    border-bottom: 1px #ccc solid;
-    color: #333;
-    border-left: 2px #04a8c4 solid;
-    padding: 0 10px;
-    clear: both;
-    overflow: hidden;
-  }
-  
-  .map-list .list .txt {
-    float: left;
-  }
-  
-  .map-list .list .icon {
-    float: right;
-  }
-  .map-list li{
-    padding: 0 10px;
-    line-height: 30px;
-  }
+
 </style>

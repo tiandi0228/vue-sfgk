@@ -81,17 +81,17 @@
     margin-bottom: 60px;
     background: #fff;
     padding: 10px;
-  }
-  .list ul{
-    padding-bottom: 5px;
-  }
-  .list li {
-    line-height: 30px;
-    width: 100%;
-    overflow: hidden;
-    border-bottom: 1px #e3e3e3 solid;
-    display: block;
-    padding: 5px 0;
+    ul {
+      padding-bottom: 5px;
+      li {
+        line-height: 30px;
+        width: 100%;
+        overflow: hidden;
+        border-bottom: 1px #e3e3e3 solid;
+        display: block;
+        padding: 5px 0;
+      }
+    }
   }
 
 </style>

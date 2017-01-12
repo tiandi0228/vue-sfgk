@@ -10,8 +10,9 @@
   .ewm {
     text-align: center;
     padding-top: 20px;
-  }
-  .ewm p{
+    p {
       padding: 10px 0 0 0;
+    }
   }
+
 </style>

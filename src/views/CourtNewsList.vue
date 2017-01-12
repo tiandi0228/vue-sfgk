@@ -60,31 +60,28 @@
     padding: 10px 10px 0 10px;
     margin-bottom: 60px;
     background: #fff;
-  }
-  
-  .news-list li {
-    line-height: 30px;
-    width: 100%;
-    overflow: hidden;
-    border-bottom: 1px #e3e3e3 solid;
-    display: block;
-    padding: 5px 0;
-  }
-  
-  .pager {
-    width: 100%;
-    background: #fff;
-    height: 40px;
-    margin-top: 10px;
-  }
-  
-  .pager span {
-    float: left;
-    width: 50%;
-    color: #333;
-    text-align: center;
-    line-height: 40px;
-    display: inline-block;
+    li {
+      line-height: 30px;
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 1px #e3e3e3 solid;
+      display: block;
+      padding: 5px 0;
+    }
+    .pager {
+      width: 100%;
+      background: #fff;
+      height: 40px;
+      margin-top: 10px;
+    }
+    .pager span {
+      float: left;
+      width: 50%;
+      color: #333;
+      text-align: center;
+      line-height: 40px;
+      display: inline-block;
+    }
   }
 
 </style>

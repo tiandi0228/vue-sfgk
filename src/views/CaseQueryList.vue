@@ -207,154 +207,140 @@
 <style lang="less" scoped>
   .case-query-list {
     margin-bottom: 60px;
-  }
-  
-  .case-query-list .search {
-    background: #fff;
-    color: #000;
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .case-query-list .search .mu-text-field {
-    width: 100px;
-  }
-  
-  .case-query-list .search button {
-    width: 100%;
-    clear: both;
-    height: 40px;
-    background: #20afc5;
-    color: #fff;
-  }
-  
-  .case-query-list li {
-    background: #fff;
-    margin: 10px 0 0 0;
-    color: #000;
-    overflow: hidden;
-  }
-  
-  .case-query-list li em {
-    font-style: normal;
-    color: #20afc5;
-  }
-  
-  .case-query-list li p {
-    padding: 0 10px;
-    line-height: 40px;
-  }
-  
-  .case-query-list .FY {
-    overflow: hidden;
-  }
-  
-  .case-query-list li .con {
-    background: #dfdfdf;
-    overflow: hidden;
-    padding: 10px;
-  }
-  
-  .case-query-list li .con .DSR {
-    overflow: hidden;
-    padding: 10px 0;
-  }
-  
-  .case-query-list li .con .DSR span {
-    float: left;
-    width: 65px;
-  }
-  
-  .case-query-list li .con .DSR dl {
-    float: left;
-    width: 70%;
-  }
-  
-  .case-query-list .info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #f5f5f9;
-    color: #000;
-    padding: 10px;
-  }
-  
-  .case-query-list .icon-close {
-    position: absolute;
-    top: 0;
-    right: 10px;
-    font-size: 26px;
-    z-index: 102;
-    color: #000;
-  }
-  
-  .case-query-list .info h2 {
-    border-left: 5px #0085cf solid;
-    font-size: 14px;
-    padding-left: 10px;
-  }
-  
-  .case-query-list .info .info-con {
-    padding: 10px 0;
-    border-top: 1px #dcdcdc solid;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background: #fff;
-  }
-  
-  .case-query-list .info .info-con ul {
-    margin-bottom: 20px;
-  }
-  
-  .case-query-list .info .info-con li {
-    border-bottom: 1px #dcdcdc solid;
-    padding: 0 10px;
-    line-height: 35px;
-    margin-top: 0;
-  }
-  
-  .case-query-list .info .fr {
-    float: right;
-  }
-  
-  .case-query-list .password {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    height: 120px;
-    background: #fff;
-    z-index: 101;
-    margin: -60px 0 0 -100px;
-    padding: 10px;
-  }
-  
-  .case-query-list .password input {
-    height: 30px;
-    width: 100%;
-    border-bottom: 1px #20afc5 solid;
-    margin: 10px 0;
-    color: #000;
-  }
-  
-  .case-query-list .password button {
-    width: 100%;
-    clear: both;
-    height: 40px;
-    background: #20afc5;
-    color: #fff;
-  }
-  
-  .case-query-list .make {
-    background: #000;
-    opacity: 0.5;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
+    .search {
+      background: #fff;
+      color: #000;
+      text-align: center;
+      padding: 10px;
+      .mu-text-field {
+        width: 100px;
+      }
+      button {
+        width: 100%;
+        clear: both;
+        height: 40px;
+        background: #20afc5;
+        color: #fff;
+      }
+    }
+    li {
+      background: #fff;
+      margin: 10px 0 0 0;
+      color: #000;
+      overflow: hidden;
+      em {
+        font-style: normal;
+        color: #20afc5;
+      }
+      p {
+        padding: 0 10px;
+        line-height: 40px;
+      }
+      .FY {
+        overflow: hidden;
+      }
+      .con {
+        background: #dfdfdf;
+        overflow: hidden;
+        padding: 10px;
+        .DSR {
+          overflow: hidden;
+          padding: 10px 0;
+          span {
+            float: left;
+            width: 65px;
+          }
+          dl {
+            float: left;
+            width: 70%;
+          }
+        }
+      }
+    }
+    .info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #f5f5f9;
+      color: #000;
+      padding: 10px;
+      .icon-close {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 26px;
+        z-index: 102;
+        color: #000;
+      }
+      h2 {
+        border-left: 5px #0085cf solid;
+        font-size: 14px;
+        padding-left: 10px;
+      }
+      .info-con {
+        padding: 10px 0;
+        border-top: 1px #dcdcdc solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background: #fff;
+        ul {
+          margin-bottom: 20px;
+          li {
+            border-bottom: 1px #dcdcdc solid;
+            padding: 0 10px;
+            line-height: 35px;
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    .fr {
+      float: right;
+    }
+    .password {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 120px;
+      background: #fff;
+      z-index: 101;
+      margin: -60px 0 0 -100px;
+      padding: 10px;
+      .icon-close {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        font-size: 26px;
+        z-index: 102;
+        color: #000;
+      }
+      input {
+        height: 30px;
+        width: 100%;
+        border-bottom: 1px #20afc5 solid;
+        margin: 10px 0;
+        color: #000;
+      }
+      button {
+        width: 100%;
+        clear: both;
+        height: 40px;
+        background: #20afc5;
+        color: #fff;
+      }
+    }
+    .make {
+      background: #000;
+      opacity: 0.5;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
   }
 
 </style>

@@ -72,23 +72,21 @@
     top: 10%;
     left: 50%;
     margin-left: -45%;
-  }
-  
-  .menu li {
-    border: 1px #e3e3e3 solid;
-    margin: 0 10px 20px 10px;
-    border-radius: 20px;
-    text-align: center;
-    line-height: 40px;
-    background: #fff;
-    color: #333;
+    li {
+      border: 1px #e3e3e3 solid;
+      margin: 0 10px 20px 10px;
+      border-radius: 20px;
+      text-align: center;
+      line-height: 40px;
+      background: #fff;
+      color: #333;
+      a {
+        color: #333;
+      }
+      .iconfont {
+        color: #0186d0;
+      }
+    }
   }
 
-  .menu li a{
-      color: #333;
-  }
-  
-  .iconfont{
-    color: #0186d0;
-  }
 </style>

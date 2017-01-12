@@ -1,13 +1,36 @@
 <template lang="html">
-    <div class="service-platform">
-        <p>为进一步深化司法公开，落实司法为民，提升司法服务的科技化和信息化水平，畅通群众与人民法院之间的联系渠道，浙江法院特设了12368司法服务热线。本热线是集诉讼咨询、案件查询、信访投诉、联系法官等多项功能于一体的综合性诉讼便民服务平台；实行全省三级法院“一号对外、分级部署、各院联动、限时办理”的工作机制。人民法院有专门的热线坐席员，负责接听处理您的来电。</p>
-        <p><a href="tel:12368">点击拨打热线电话：12368</a></p>
-        <vFooter></vFooter>
-    </div>
+  <div class="menu">
+    <ul>
+      <router-link :to="{path: '/detail/1/ptjs'}" tag="li"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>平台介绍</span></router-link>
+      <li><a href="tel:12368"><span class="icon iconfont icon-sanjiaoxing-copy"></span><span>12368热线</span></a></li>
+    </ul>
+    <vFooter></vFooter>
+  </div>
 </template>
 <style lang="less" scoped>
-    .service-platform p{
-        padding: 10px;
+  .menu ul {
+    background: #fff;
+    width: 90%;
+    padding: 20px 0 10px 0;
+    border-radius: 20px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -45%;
+    li {
+      border: 1px #e3e3e3 solid;
+      margin: 0 10px 20px 10px;
+      border-radius: 20px;
+      text-align: center;
+      line-height: 40px;
+      background: #fff;
+      color: #333;
+      a {
+        color: #333;
+      }
+      .iconfont {
+        color: #0186d0;
+      }
     }
-
+  }
 </style>

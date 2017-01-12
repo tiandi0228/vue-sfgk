@@ -325,51 +325,36 @@
     margin-bottom: 60px;
     background: #fff;
     padding-bottom: 10px;
-  }
-  
-  .judgment-book-list .search {
-    color: #000;
-    background: #fff;
-    padding: 10px;
-  }
-  
-  .judgment-book-list .search select {
-    width: 100%;
-    clear: both;
-    border: 1px #ccc solid;
-    height: 40px;
-    margin-bottom: 10px;
-  }
-  
-  .judgment-book-list .search .mu-text-field {
-    width: 100%;
-    clear: both;
-  }
-  
-  .judgment-book-list .search .mu-date-picker {
-    width: 100%;
-    clear: both;
-  }
-  
-  .judgment-book-list .search button {
-    width: 100%;
-    clear: both;
-    height: 40px;
-    background: #20afc5;
-    color: #fff;
-  }
-  
-  .judgment-book-list ul {
-    padding-bottom: 10px;
-  }
-  
-  .judgment-book-list li {
-    line-height: 30px;
-    width: 100%;
-    overflow: hidden;
-    border-bottom: 1px #e3e3e3 solid;
-    display: block;
-    padding: 5px 0;
+    .search {
+      color: #000;
+      background: #fff;
+      padding: 10px;
+      select {
+        width: 100%;
+        clear: both;
+        border: 1px #ccc solid;
+        height: 40px;
+        margin-bottom: 10px;
+      }
+      button {
+        width: 100%;
+        clear: both;
+        height: 40px;
+        background: #20afc5;
+        color: #fff;
+      }
+    }
+    ul {
+      padding-bottom: 10px;
+      li {
+        line-height: 30px;
+        width: 100%;
+        overflow: hidden;
+        border-bottom: 1px #e3e3e3 solid;
+        display: block;
+        padding: 5px 0;
+      }
+    }
   }
 
 </style>

@@ -57,15 +57,14 @@
     margin-bottom: 60px;
     background: #fff;
     padding: 10px;
+    li {
+      line-height: 30px;
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 1px #e3e3e3 solid;
+      display: block;
+      padding: 5px 0;
+    }
   }
-  
-  .list li {
-    line-height: 30px;
-    width: 100%;
-    overflow: hidden;
-    border-bottom: 1px #e3e3e3 solid;
-    display: block;
-    padding: 5px 0;
-  }
-  
+
 </style>

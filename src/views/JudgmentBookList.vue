@@ -11,7 +11,10 @@
         <select v-model="cbfy">
           <option v-for="(zy,index) in selection" :value="zy.text" :selected="index === 0 ? true : false">{{zy.text}}</option>
         </select>
-        <p><mu-text-field v-model="ah" hintText="请输入案号" /> <mu-text-field v-model="key" hintText="请输入关键字" /></p>
+        <p>
+          <mu-text-field v-model="ah" hintText="请输入案号" />
+          <mu-text-field v-model="key" hintText="请输入关键字" />
+        </p>
         <mu-date-picker v-model="startDate" hintText="选择起始时间" />
         <mu-date-picker v-model="endDate" hintText="选择结束时间" />
         <button>搜索</button>
@@ -371,55 +374,48 @@
   .judgment-book-list {
     margin-bottom: 60px;
     background: #fff;
-  }
-  
-  .judgment-book-list .search {
-    color: #000;
-    background: #fff;
-    padding: 10px;
-  }
-  
-  .judgment-book-list .search select {
-    width: 100%;
-    clear: both;
-    border: 1px #ccc solid;
-    height: 40px;
-    margin-bottom: 10px;
-  }
-  
-  .judgment-book-list .search .mu-text-field {
-    width: 46%;
-    clear: both;
-    margin-right: 2%;
-  }
-  
-  .judgment-book-list .search .mu-date-picker {
-    float: left;
-    width: 45%;
-    overflow: hidden;
-    margin-right: 5%;
-  }
-  
-  .judgment-book-list .search button {
-    width: 100%;
-    clear: both;
-    height: 40px;
-    background: #20afc5;
-    color: #fff;
-  }
-  
-  .judgment-book-list ul {
-    padding: 0 10px 10px 10px;
-    overflow: hidden;
-  }
-  
-  .judgment-book-list li {
-    line-height: 30px;
-    width: 100%;
-    overflow: hidden;
-    border-bottom: 1px #e3e3e3 solid;
-    display: block;
-    padding: 5px 0;
+    .search {
+      color: #000;
+      background: #fff;
+      padding: 10px;
+      select {
+        width: 100%;
+        clear: both;
+        border: 1px #ccc solid;
+        height: 40px;
+        margin-bottom: 10px;
+      }
+      .mu-text-field {
+        width: 46%;
+        clear: both;
+        margin-right: 2%;
+      }
+      .mu-date-picker {
+        float: left;
+        width: 45%;
+        overflow: hidden;
+        margin-right: 5%;
+      }
+      button {
+        width: 100%;
+        clear: both;
+        height: 40px;
+        background: #20afc5;
+        color: #fff;
+      }
+    }
+    ul {
+      padding: 0 10px 10px 10px;
+      overflow: hidden;
+      li {
+        line-height: 30px;
+        width: 100%;
+        overflow: hidden;
+        border-bottom: 1px #e3e3e3 solid;
+        display: block;
+        padding: 5px 0;
+      }
+    }
   }
 
 </style>
