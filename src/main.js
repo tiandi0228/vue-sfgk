@@ -12,8 +12,8 @@ import './assets/less/common.less'
 Vue.use(MuseUI)
 
 Object.keys(components).forEach((key) => {
-    var name = key.replace(/(\w)/, (v) => v.toUpperCase()) //首字母大写
-    Vue.component(`v${name}`, components[key])
+  var name = key.replace(/(\w)/, (v) => v.toUpperCase()) //首字母大写
+  Vue.component(`v${name}`, components[key])
 })
 
 new Vue({
